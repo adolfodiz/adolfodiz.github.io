@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-11-23">
+<meta name="description" content="De la ecuación de dispersión a los ábacos de Wiegel: shoaling, rotura y difracción del oleaje, con los ábacos superpuestos a escala real sobre el mapa del puerto.">
+
+<title>Web-App para Análisis del Oleaje – Adolfo Diz — Ingeniería e IA Local</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../logo/logo_AD_eng_morado.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-52f2520a4c4e4ec35b5f360394ba83ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../logo/logo_AD_eng_negro.png" alt="AD" class="navbar-logo light-content">
+    <img src="../logo/logo_AD_eng_negro.png" alt="AD" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Adolfo Diz — Ingeniería e IA Local</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../posts/index.html"> 
+<span class="menu-text">Artículos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.youtube.com/@adolfodiz2855"> 
+<span class="menu-text">YouTube</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/adolfodiz"> 
+<span class="menu-text">GitHub</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/@adolfodiz2855"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/adolfodiz"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Z2VvdGVjbmlh">geotecnia <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aGlkcm9sb2clQzMlQURh">hidrología <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dGFsdWRlcw==">taludes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dCVDMyVCQW5lbGVz">túneles <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2ViLWFwcA==">web-app <span class="quarto-category-count">(2)</span></div></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Web-App para Análisis del Oleaje</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">oceanografía</div>
+    <div class="quarto-category">oleaje</div>
+    <div class="quarto-category">web-app</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    De la ecuación de dispersión a los ábacos de Wiegel: shoaling, rotura y difracción del oleaje, con los ábacos superpuestos a escala real sobre el mapa del puerto.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 23, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="article-hero a-blue">
+<img src="../logo/logo_AD_eng_azul.png" class="img-fluid">
+<div class="ah-meta">
+<p><span class="ah-cat">Ingeniería del agua · Oceanografía</span> <span class="ah-date">23 de noviembre de 2025 · migrado desde LinkedIn</span></p>
+</div>
+</div>
+<section id="section" class="level1">
+<h1><img src="img/oleaje/image1.png" class="fig-portada img-fluid"></h1>
+<p><em>Los buenos profesores tienen la capacidad de hacerte entender sin artificios innecesarios.</em></p>
+<p>Esto va dedicado a esos raros especímenes, por sus enseñanzas, por sus escritos…</p>
+<ul>
+<li><p>a Miguel Ángel Losada, quien nos enseñó a deducir la ecuación de dispersión desde el esquema del sólido elemental sin memorizar absolutamente nada; y amar este mundo de locos sin saber si naufragarás.</p></li>
+<li><p>a Vicente Negro, quien nos animó a deconstruirnos mentalmente para ver si las tesis podían resistir el embate, como diques frente a temporales.</p></li>
+<li><p>a Raúl Medina e Íñigo Losada, quienes nos instaron a hacernos siempre una pregunta más, sin dar la respuesta por sabida.</p></li>
+<li><p>y a tantos otros del difícil y entretenido mundo oceanográfico, que entregan su pasión cada vez que hablan de ello: Gregorio Gómez Pina, Gabriel Chamorro, etc.</p></li>
+</ul>
+<p>Si consideramos a don Ramón Iribarren como el padre de la escuela española -entre las mejores del mundo en este tema- podríamos destacar que una fórmula simple, al estilo de Newton y Einstein, es como el destilado de un buen orujo lebaniego, no es perfecto, pero contiene todo el saber en una minúscula porción: de ahí que nuestro querido Gabriel le dedicara a Vicente el esquema de su fórmula simple para diques en talud como emblema de una camiseta juvenil en conexión con la genialidad simplificadora de Iribarren con su famoso número para describir la forma de rompeolas en playas…, mundo de locos, ya os digo…</p>
+<p><img src="img/oleaje/image2.png" class="img-fluid"></p>
+<p><img src="img/oleaje/image3.png" class="img-fluid"><img src="img/oleaje/image4.png" class="img-fluid"></p>
+<p>Hace ya mucho tiempo que no abordo obras marítimas o costeras, pero mis antiguos scripts tenían un potencial bastante grande para adaptarse a las nuevas tecnologías y sobre todo, a las nuevas capacidades de resoluciones numéricas que permiten los procesadores de hoy día -y las potentes memorias gráficas-, así que mi sobrino insistió en aprovechar todo este potencial.</p>
+<p><img src="img/oleaje/image5.png" class="img-fluid"></p>
+<ol type="1">
+<li>Análisis de Dispersión y Rotura</li>
+</ol>
+<p>Esta sección caracteriza cómo una ola que viaja desde aguas profundas cambia sus propiedades al llegar a una zona de profundidad <code>d</code>.</p>
+<section id="parámetros-de-entrada" class="level3">
+<h3 data-anchor-id="parámetros-de-entrada">Parámetros de Entrada</h3>
+<ul>
+<li><p><strong>Profundidad (d):</strong> La profundidad del agua en el punto de interés.</p></li>
+<li><p><strong>Período (T):</strong> El tiempo que tardan dos crestas de ola consecutivas en pasar por un punto. Es el parámetro más constante del oleaje.</p></li>
+<li><p><strong>Altura de Ola en aguas Profundas (Ho):</strong> La altura de la ola en aguas donde la profundidad no afecta a su comportamiento.</p></li>
+<li><p><strong>Pendiente del Lecho (mi):</strong> La inclinación del fondo marino (m/m). Ayuda a determinar cómo romperá la ola.</p></li>
+</ul>
+<p><img src="img/oleaje/image6.png" class="img-fluid"></p>
+<p>Cálculos Clave</p>
+<ul>
+<li><strong>Longitud de Onda (L):</strong> La distancia horizontal entre dos crestas. Se calcula resolviendo la ecuación de dispersión:</li>
+</ul>
+<p><img src="img/oleaje/image7.png" class="img-fluid"></p>
+<ul>
+<li><strong>Asomeramiento (Shoaling):</strong> A medida que la ola entra en aguas menos profundas, su altura cambia. El <strong>Coeficiente de Shoaling (Ks)</strong> cuantifica este cambio. Una ola asomerada tiene una altura</li>
+</ul>
+<p><img src="img/oleaje/image8.png" class="img-fluid"></p>
+<ul>
+<li><strong>Rotura de la Ola:</strong> Una ola no puede crecer indefinidamente. Rompe cuando su altura se vuelve demasiado grande para la profundidad local. Calculamos esta altura límite (<code>Hb</code>) según varios criterios:</li>
+</ul>
+<p><img src="img/oleaje/image9.png" class="img-fluid"></p>
+<p><img src="img/oleaje/image10.png" class="img-fluid"></p>
+</section>
+<section id="explicación-detallada" class="level2">
+<h2 data-anchor-id="explicación-detallada">Explicación detallada</h2>
+<p>La estrella representa el&nbsp;<strong>ESTADO REAL</strong>&nbsp;de la ola en tu caso de estudio en esa profundidad específica (<em>d</em>=15 m), calculado únicamente por Conservación de Energía (asomeramiento o&nbsp;<em>shoaling</em>), sin tener en cuenta todavía si rompe o no.</p>
+<p>Véase como una comparación entre&nbsp;<strong>Solicitación</strong>&nbsp;vs&nbsp;<strong>Resistencia</strong>:</p>
+<ol type="1">
+<li><p><strong>Las Curvas (Roja, Verde, etc.):</strong>&nbsp;Representan el&nbsp;<strong>Límite Físico (El Techo)</strong>.</p>
+<ul>
+<li>Nos dicen:&nbsp;<em>“En esta profundidad relativa, el agua no puede soportar una ola con un índice&nbsp;γ&nbsp;mayor a este valor. <strong>Si pasas de aquí, la ola rompe</strong>”</em>.</li>
+</ul></li>
+<li><p><strong>La Estrella Azul (caso estudiado):</strong>&nbsp;Representa la&nbsp;<strong>Solicitación (La Ola)</strong>.</p>
+<ul>
+<li><p>Sus coordenadas son:&nbsp;(<em>x</em>,<em>y</em>) = (<em>d</em><sub>15</sub>​/<em>L</em><sub>0</sub>​,&nbsp;<em>H<sub>shoaling</sub></em><sub>​</sub>/<em>d</em><sub>15</sub>​)</p></li>
+<li><p><em>Es decir, es la altura que la ola&nbsp;quiere tener&nbsp;en d = 15m basada en la energía que trae desde alta mar.</em></p></li>
+</ul></li>
+</ol>
+</section>
+<section id="cómo-interpretar-su-posición-respecto-a-las-curvas-p.e.-de-goda" class="level2">
+<h2 data-anchor-id="cómo-interpretar-su-posición-respecto-a-las-curvas-p.e.-de-goda">¿Cómo interpretar su posición respecto a las curvas, p.e. de Goda?</h2>
+<ul>
+<li><p><strong>Si la estrella está POR DEBAJO de la curva roja (Goda):</strong></p>
+<ul>
+<li><p>Significa que la ola cabe perfectamente en esa profundidad. La altura que trae (<em>Hshoaling</em>​) es menor que la altura máxima permitida (<em>Hb</em>​).</p></li>
+<li><p><strong>Estado:</strong>&nbsp;NO HA ROTO (Estable).</p></li>
+</ul></li>
+<li><p><strong>Si la estrella está ENCIMA o TOCANDO la curva roja:</strong></p>
+<ul>
+<li><p>Significa que la ola teóricamente&nbsp;<em>quería</em>&nbsp;tener esa altura por asomeramiento, pero el fondo no la deja. Físicamente es imposible que la estrella esté por encima.</p></li>
+<li><p><strong>Interpretación:</strong>&nbsp;La ola&nbsp;<strong>YA HA ROTO</strong>&nbsp;antes de llegar a ese punto o está rompiendo justo ahí.</p></li>
+</ul></li>
+</ul>
+<p><strong>En resumen:</strong>&nbsp;La estrella es un “punto de estado” independiente. El gráfico sirve precisamente para ver si ese punto ha cruzado o no la “<em>línea de la muerte</em>” (la curva de Goda o la que se tome como referencia).</p>
+<p><img src="img/oleaje/image11.png" class="img-fluid"></p>
+<p>Pongamos un ejemplo muy simple de uno de los libros de Vicente Negro, al que intentaremos darle otro giro de tuerca más:</p>
+</section>
+<section id="ejemplo-práctico" class="level2">
+<h2 data-anchor-id="ejemplo-práctico">Ejemplo práctico</h2>
+<p><em>El puerto de la figura adjunta tiene su bocana en 15 m de profundidad y está sometido a un oleaje medio de 7 s de periodo. El frente de ondas queda dibujado en la planta adjunta y el rayo forma 105° con la última alineación del dique de abrigo. Determinar el coeficiente de difracción en el muelle en estudio empleando tanto el diagrama de Wiegel como la solución analítica.</em></p>
+<p><img src="img/oleaje/image12.png" class="img-fluid"></p>
+<p><img src="img/oleaje/image13.png" class="img-fluid"></p>
+<p>Introducimos los datos conocidos en el panel del usuario (y completamos los no conocidos para tener una aproximación a un caso de temporal fuerte):</p>
+<p><img src="img/oleaje/image14.png" class="img-fluid">d = 15 m / T = 7s / r = 500 m / β = 30º</p>
+<p><img src="img/oleaje/image15.png" class="img-fluid"></p>
+<p>El programa enseguida arroja una completa tabla de cálculos, tanto intermedios como finales:</p>
+<p><img src="img/oleaje/image16.png" class="img-fluid"></p>
+<p>Podemos comprobar alguno de ellos a mano:</p>
+<p><em>En primer lugar se calcula la longitud de onda en profundidades indefinidas, resultando 76,50 m (con fórmula no simplificada). En segundo lugar se determina la longitud de onda a pie de dique, obteniendo 67,60 m</em></p>
+</section>
+<section id="gráficos-de-análisis" class="level2">
+<h2 data-anchor-id="gráficos-de-análisis">Gráficos de Análisis</h2>
+</section>
+<section id="shoaling-y-rotura-por-profundidad" class="level2">
+<h2 data-anchor-id="shoaling-y-rotura-por-profundidad">1. Shoaling y Rotura por Profundidad:</h2>
+<ul>
+<li><p>Este gráfico muestra cómo el coeficiente de shoaling <code>Ks</code> (líneas de colores) cambia con la profundidad relativa <code>d/Lo</code>.</p></li>
+<li><p>La línea discontinua naranja representa el límite de rotura de Mc-Cowan (<code>Hb/Ho</code>). Si la curva de <code>Ks</code> cruza esta línea, la ola ha roto.</p></li>
+<li><p>Los ejes secundarios te permiten leer los valores en metros (<code>d</code> y <code>H</code>) directamente.</p></li>
+</ul>
+<p><img src="img/oleaje/image17.png" class="img-fluid"></p>
+</section>
+<section id="coeficientes-de-rotura" class="level2">
+<h2 data-anchor-id="coeficientes-de-rotura">2. Coeficientes de Rotura:</h2>
+<ul>
+<li><p>Este gráfico muestra el coeficiente <code>Hb/d</code> según Goda para diferentes pendientes del fondo.</p></li>
+<li><p>Puedes ver cómo una pendiente más suave (ej. 1/50) resulta en un coeficiente de rotura menor.</p></li>
+<li><p>La línea roja representa el coeficiente para la pendiente que has introducido.</p></li>
+</ul>
+<p><img src="img/oleaje/image18.png" class="img-fluid"></p>
+</section>
+<section id="análisis-de-difracción-wiegel" class="level2">
+<h2 data-anchor-id="análisis-de-difracción-wiegel">Análisis de Difracción (Wiegel)</h2>
+<p>Esta sección calcula cómo la energía de la ola (y por tanto su altura) se redistribuye al pasar por el borde de una estructura, como un dique.</p>
+<p><img src="img/oleaje/image19.png" class="img-fluid"><img src="img/oleaje/image20.png" class="img-fluid"></p>
+<section id="parámetros-de-entrada-1" class="level3">
+<h3 data-anchor-id="parámetros-de-entrada-1">Parámetros de Entrada</h3>
+<ul>
+<li><p><strong>Distancia ‘r’:</strong> Distancia radial desde la punta o morro del dique.</p></li>
+<li><p><strong>Ángulo ‘beta’:</strong> Ángulo en grados medido desde el eje del dique.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p><em>Vemos que el ángulo del rayo de la ola incidente es de 105-30 (= 90-15) = 75º</em></p>
+</blockquote>
+</section>
+<section id="resultados" class="level3">
+<h3 data-anchor-id="resultados">Resultados</h3>
+<ul>
+<li><p><strong>Coeficiente de Difracción (kd):</strong> Es el ratio entre la altura de la ola en un punto después de la difracción y la altura de la ola incidente: K_d = H / H_i. Un valor de <code>kd=0.5</code> significa que la ola en ese punto tiene la mitad de la altura que la ola original.</p></li>
+<li><p><strong>Ábacos de Wiegel:</strong> Cada gráfico muestra un mapa de los valores de <code>kd</code> para un ángulo de ataque de la ola incidente (θ). Las zonas “calientes” (rojo/naranja) son donde la altura de la ola se mantiene o incluso aumenta, mientras que las zonas “frías” (azul/verde) son las zonas de “sombra” o abrigo del dique.</p></li>
+</ul>
+<p><img src="img/oleaje/image21.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="gráficos-de-difracción" class="level2">
+<h2 data-anchor-id="gráficos-de-difracción">Gráficos de Difracción</h2>
+<p><img src="img/oleaje/image22.png" class="img-fluid"></p>
+</section>
+<section id="aquí-tenemos-la-solución-del-ejemplo" class="level2">
+<h2 data-anchor-id="aquí-tenemos-la-solución-del-ejemplo">Aquí tenemos la solución del ejemplo:</h2>
+</section>
+<section id="kd-0.1156-para-θ-75º-áng.-inc." class="level2">
+<h2 data-anchor-id="kd-0.1156-para-θ-75º-áng.-inc.">Kd = 0.1156 para θ = 75º (áng. inc.)</h2>
+<p>Aunque el programa nos da el espectro completo de gráficos…</p>
+<p><img src="img/oleaje/image23.png" class="img-fluid"></p>
+<p><img src="img/oleaje/image24.png" class="img-fluid"></p>
+</section>
+<section id="pero-vamos-a-darle-vida" class="level2">
+<h2 data-anchor-id="pero-vamos-a-darle-vida">pero vamos a darle ‘vida’…</h2>
+<p><img src="img/oleaje/image25.png" class="img-fluid"><img src="img/oleaje/image26.png" class="img-fluid"> Introducimos el Puerto de Algeciras y enseguida el mapa cambia: y hacemos click en el morro del dique…</p>
+<p><img src="img/oleaje/image200.png" class="img-fluid"><img src="img/oleaje/image28.png" class="img-fluid"><img src="img/oleaje/image29.png" class="img-fluid"></p>
+<p>¿Y qué ocurre después?</p>
+<p>Pues que sobre el propio mapa nos aparece el ábaco de Wiegel sobre el morro del dique, a escala real sobre la longitud de onda…</p>
+<p>El ángulo incidente θ lo podemos ajustar antes o después del click (θ = 75º) <img src="img/oleaje/image30.png" class="img-fluid"></p>
+<p>Orientamos el ábaco para alinearlo con el dique:</p>
+<p><img src="img/oleaje/image31.png" class="img-fluid"> <img src="img/oleaje/image32.png" class="img-fluid"></p>
+<p>Y ya fijamos la orientacion para obtener valores… <img src="img/oleaje/image33.png" class="img-fluid"></p>
+<p>En primer lugar podemos ver la solución sobre el punto de usuario: Kd = 0.1156 🡪 H<sub>difr</sub>= 0.95 m</p>
+<p><img src="img/oleaje/image34.png" class="img-fluid"></p>
+<p>Pero podemos analizar otros puntos de interés, y además, tenemos las isolíneas ya como alturas de ola difractadas: los puntos se van guardando en una tabla que se muestra al final, además de reflejarse directamente en el mapa, dejando una imagen muy útil sobre las diferentes zonas que admiten estar operativas en función de una determinada altura de ola:</p>
+<p><img src="img/oleaje/image35.png" class="img-fluid"></p>
+<p><img src="img/oleaje/image36.png" class="img-fluid"></p>
+<p><img src="img/oleaje/image37.png" class="img-fluid"></p>
+<p><img src="img/oleaje/image38.png" class="img-fluid"><img src="img/oleaje/image39.png" class="img-fluid"><img src="img/oleaje/image40.png" class="img-fluid"><img src="img/oleaje/image41.png" class="img-fluid"></p>
+
+
+
+</section>
+</section>
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1786715349038" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
+<a href="../posts/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="img\caumax\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Artículos
+</h5>
+<div class="card-text listing-description delink">
+<p>Artículos de hidrología, geotecnia e IA local — migrados desde LinkedIn y ampliados con datos, código, vídeo y apps.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="Z2VvdGVjbmlhJTJDdGFsdWRlcw==" data-listing-date-sort="1765666800000" data-listing-file-modified-sort="1786716920902" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="847">
+<a href="../posts/sobre-los-taludes-en-roca.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_rojo.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sobre los taludes en roca: estereogramas interpretativos
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VvdGVjbmlh'); return false;">geotecnia</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGFsdWRlcw=='); return false;">taludes</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Generación de estereogramas para fallas plana, en cuña, volcamiento y vuelco por flexión, con autodetección de familias de juntas y coeficientes de seguridad.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Dec 14, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="Z2VvdGVjbmlhJTJDdCVDMyVCQW5lbGVz" data-listing-date-sort="1765148400000" data-listing-file-modified-sort="1786716940933" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1754">
+<a href="../posts/sobre-la-excavacion-de-tuneles.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_rojo.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sobre la excavación de túneles, o cómo sobrevivir a los errores de las tesis
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VvdGVjbmlh'); return false;">geotecnia</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dCVDMyVCQW5lbGVz'); return false;">túneles</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Curvas características GRC, LDP y sostenimiento en túneles: de Kirsch a Carranza-Torres, y una web-app que los resuelve y contrasta con RockSupport y RS2.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Dec 8, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="aGlkcm9sb2clQzMlQURhJTJDd2ViLWFwcA==" data-listing-date-sort="1763247600000" data-listing-file-modified-sort="1786715322700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="884">
+<a href="../posts/continuando-con-la-hidrologia.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_azul.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Continuando con la hidrología: curvas IDF, hietogramas y tránsito por el cauce
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('aGlkcm9sb2clQzMlQURh'); return false;">hidrología</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLWFwcA=='); return false;">web-app</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Una web-app que genera curvas IDF locales por krigeado, hietogramas por bloques alternos y una primera aproximación a los parámetros de Muskingum con más de 1.400 tránsitos.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Nov 16, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="aGlkcm9sb2clQzMlQURhJTJDd2ViLWFwcA==" data-listing-date-sort="1762729200000" data-listing-file-modified-sort="1786720620462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1318">
+<a href="../posts/sobre-caumax-desarrollos-hidrologicos-en-la-web.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../posts/img/caumax/00.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sobre CAUMAX, desarrollos hidrológicos directos en la web y otras lindeces…
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('aGlkcm9sb2clQzMlQURh'); return false;">hidrología</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLWFwcA=='); return false;">web-app</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>La historia de cómo recuperamos los scripts de hidrología de mi etapa en proyectos y los convertimos en una web-app que supera al plugin CAUMAX de QGIS, con todas las tripas…</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Nov 10, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Adolfo Diz · Ingeniería e IA Local</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Hecho con Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

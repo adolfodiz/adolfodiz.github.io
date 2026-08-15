@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-12-08">
+<meta name="description" content="Curvas características GRC, LDP y sostenimiento en túneles: de Kirsch a Carranza-Torres, y una web-app que los resuelve y contrasta con RockSupport y RS2.">
+
+<title>Sobre la excavación de túneles, o cómo sobrevivir a los errores de las tesis – Adolfo Diz — Ingeniería e IA Local</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../logo/logo_AD_eng_morado.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-52f2520a4c4e4ec35b5f360394ba83ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../logo/logo_AD_eng_negro.png" alt="AD" class="navbar-logo light-content">
+    <img src="../logo/logo_AD_eng_negro.png" alt="AD" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Adolfo Diz — Ingeniería e IA Local</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../posts/index.html"> 
+<span class="menu-text">Artículos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.youtube.com/@adolfodiz2855"> 
+<span class="menu-text">YouTube</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/adolfodiz"> 
+<span class="menu-text">GitHub</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/@adolfodiz2855"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/adolfodiz"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Z2VvdGVjbmlh">geotecnia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGlkcm9sb2clQzMlQURh">hidrología <span class="quarto-category-count">(2)</span></div><div class="category" data-category="b2NlYW5vZ3JhZiVDMyVBRGE=">oceanografía <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2xlYWpl">oleaje <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGFsdWRlcw==">taludes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2ViLWFwcA==">web-app <span class="quarto-category-count">(3)</span></div></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sobre la excavación de túneles, o cómo sobrevivir a los errores de las tesis</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">geotecnia</div>
+    <div class="quarto-category">túneles</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Curvas características GRC, LDP y sostenimiento en túneles: de Kirsch a Carranza-Torres, y una web-app que los resuelve y contrasta con RockSupport y RS2.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 8, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="article-hero a-red">
+<img src="../logo/logo_AD_eng_rojo.png" class="img-fluid">
+<div class="ah-meta">
+<p><span class="ah-cat">Obras lineales · Geotecnia</span> <span class="ah-date">8 de diciembre de 2025 · migrado desde LinkedIn</span></p>
+</div>
+</div>
+<p>Uno de los temas más recurrentes en las obras lineales en un país montañoso como el nuestro es el de los túneles. Y para abordarlos con unas mínimas garantías en el ejercicio profesional tendrás que echar mano no sólo de los Jiménez Salas o los Ingeo-Túneles, sino recurrir a las fuentes originales cuando sea necesario, o sea, a las tesis de los autores que a menudo dan nombre propio a las formulaciones existentes. En otras épocas esto no era tan sencillo, y tenías que contar con la ayuda de algún catedrático o, si había suerte, con la biblioteca del Colegio. Pero cualquiera que haya revisado los documentos originales, a menudo se encuentra una desagradable sorpresa: las extensas y complejas formulaciones que se desarrollan, por lo general, acaban en fórmulas con errores que casi nunca son corregibles porque casualmente se han omitido algunas hipótesis intermedias sin cuya consideración es imposible llegar al resultado final…</p>
+<p>Alguien dirá: —bueno, eso puede ocurrir, es accidental—. Pues sí, y no le faltaría razón si no fuera porque no ocurre rara vez, sino prácticamente siempre. Y lo curioso es que esto que ya me encontré hace más de 25 años, sigue pasando a día de hoy. Es como un extraño y curioso distintivo de calidad, como cuando el escritor Eugenio d’Ors le preguntaba a su correctora si había entendido su escrito, y si decía que “sí”, le mandaba tirarlo a la papelera. Así que la frustración cuando estudiabas estos temas por tu cuenta era enorme: después de seguir largos y complejos desarrollos físico-matemáticos, intuir hipótesis simplificadoras para la resolución de algunas ecuaciones imposibles de resolver sin ellas (aunque los ordenadores ya ayudaban, no era como actualmente) y trabajar en la solución final, cuando la ponías en práctica o la representabas gráficamente te llevabas la gran decepción: aquello no casaba con ningún caso real que tuvieras contrastado, ni mucho menos con lo deducido en la tesis de referencia.</p>
+<p>Es conocido el caso comentado años después por Melis Maynar sobre la curva característica de la Dra. Mary Duncan Fama, cuya rama plástica presentaba un <em>gap</em> respecto a la elástica precisamente en el punto de unión, el correspondiente a la presión crítica de la cavidad, y que él lo achacaba generosamente a no haber entendido cómo lo calculaba ella. Este es sólo uno de los múltiples casos —ya digo, raro es que todo sea correcto en una tesis que se precie—.</p>
+<section id="las-curvas-características-y-el-punto-de-partida" class="level2">
+<h2 data-anchor-id="las-curvas-características-y-el-punto-de-partida">Las curvas características y el punto de partida</h2>
+<p>Y hablando de curvas características, y dejando el resto para mejor ocasión, desarrollé hace ya muchos años una hoja de cálculo para la graficación de las <strong>Curvas Características GRC</strong> (<em>ground reaction curve</em>) de una excavación en túnel y la obtención de sus parámetros fundamentales, así como las correspondientes al sostenimiento en función del pase de avance de la excavación, basado en las curvas <strong>LDP</strong> (<em>longitudinal displacement profile</em>) inicialmente de Panet (1996) y Chern (1998); años después pude incorporar las de Vlachopoulos &amp; Diederichs (2009).</p>
+<p>Obviando las formulaciones y sus desarrollos, que pueden hoy día buscarse con mucha más facilidad, sí conviene repasar primero al menos qué fundamentos deben tenerse para entender el proceso final al que un ingeniero se enfrenta con la excavación de un túnel:</p>
+<ul>
+<li><strong>Teorías sobre los estados tenso-deformacionales en el contorno de un túnel</strong>, tanto en espacio infinito (Kirsch —la fundamental y profusamente empleada—, Fenner, Overt &amp; Duvall, Pender, Matsumoto, Alcibíades-Serrano) como en semiespacio elástico (Jeffery y Mindlin, Sagaseta, Verruijt…).</li>
+<li><strong>Teorías sobre los estados de descarga y efecto silo</strong> para la carga en bóveda, hastiales y contrabóveda del túnel (Ritter, Engesser, Janssen, Suquet…).</li>
+<li><strong>Análisis sobre estabilidad y colapso del frente</strong> (Murayama, Broms, Peck, Leca-Panet, Támez, etc.), y las formulaciones de roturas reales del frente, al menos la espiral logarítmica y la cicloide de Frontard.</li>
+</ul>
+<p>Y finalmente se llega, tras ese arduo camino, a la extensión de la solución elástica del anillo de pared gruesa y los análisis de Terzaghi (el <em>Theoretical</em>, 1943) para el estudio del anillo plástico en el contorno del túnel y la curva de convergencia del terreno, así como la línea característica del sostenimiento, tanto en suelos cohesivos como friccionantes: Fenner, Pacher, Von Rabcewicz, etc. Destacan aquí las que seleccioné para mi script final:</p>
+<ul>
+<li><strong>Suelos Mohr-Coulomb:</strong> la solución de Duncan-Fama extendida y la de Salençon (terreno elasto-plástico perfecto y regla de flujo no-asociada).</li>
+<li><strong>Suelos Hoek-Brown:</strong> la solución de Carranza-Torres (terreno elasto-plástico perfecto y regla de flujo no-asociada), así como su extensión a terreno elasto-frágil con reblandecimiento y regla de flujo no-asociada (CT &amp; Fairhurst).</li>
+</ul>
+<p>Sobre la regla de flujo, si bien se ofrece la dilatancia ψ del terreno como un parámetro a introducir por el usuario con independencia de su ángulo de fricción φ, conviene observar que prácticamente la totalidad de los casos que afectan a la mecánica de suelos se comportan con <strong>regla de flujo no-asociada</strong> (ψ &lt; φ).</p>
+</section>
+<section id="un-ejemplo-contrastado-caso-práctico-del-máster-muiecm" class="level2">
+<h2 data-anchor-id="un-ejemplo-contrastado-caso-práctico-del-máster-muiecm">Un ejemplo contrastado: caso práctico del Máster MUIECM</h2>
+<p>Vamos a ver un ejemplo de lo que ofrece la web-app que mi sobrino ha recuperado y <em>tuneado</em>, según él. Y para eso nos basaremos en un ejemplo del Máster MUIECM — RS2 — Caso Práctico (GeotecniaICCP, ETSI Canales, Caminos y Puertos), de forma que podamos comparar resultados; para no abrumar tomaremos sólo una de las 4 curvas del método convergencia-confinamiento, en este caso la solución de Carranza-Torres (2004) del modelo de terreno tipo Hoek-Brown para rocas, basado en el índice GSI (<em>Geological Strength Index</em>).</p>
+<p>En el ejemplo se usa una sección de túnel ferroviario de Alta Velocidad de aproximadamente 15 metros de ancho, que se excavará en avance y destroza; se deduce un radio equivalente a la sección de avance de 4,3 m. El resto de parámetros del terreno pueden introducirse con mucha facilidad, contando con las ayudas típicas para parametrización usual.</p>
+<div class="fig-note">
+<p><i>Figura —</i> parámetros del terreno introducidos en la web-app (GSI, resistencia, dilatancia…).</p>
+</div>
+<p><img src="img/tuneles/image1.png" class="fig img-fluid"> <img src="img/tuneles/image2.png" class="fig img-fluid"> <img src="img/tuneles/image3.png" class="fig img-fluid"> <img src="img/tuneles/image4.png" class="fig img-fluid"> <img src="img/tuneles/image5.png" class="fig img-fluid"></p>
+<p>Introduciendo estos parámetros enseguida obtenemos la GRC elegida, donde además, el desplazamiento del ratón nos va dando valores de las curvas <em>en vivo</em>; cosas admirables de las nuevas tecnologías. Vemos además que disponemos de ejes dobles en X y triple en Y:</p>
+<ul>
+<li><strong>eje X:</strong> desplazamiento radial Ur (mm) vs Convergencia del túnel (%)</li>
+<li><strong>eje Y:</strong> Presión de campo o Interna (MPa) vs Desconfinamiento o Relajación (%) vs Radio Plástico (m)</li>
+</ul>
+<p>Además, se representa la curva del Radio Plástico a la escala adecuada para que comience a crecer a partir de la <strong>Presión Crítica (Pcr)</strong> (separación de la rama elástica verde con la plástica en rojo): en la parte elástica coincidirá con el radio del túnel (en el eje Y terciario).</p>
+<p>También podemos ver la línea de desplazamiento (mm)/convergencia (%) en el frente de excavación, según el modelo LDP seleccionado:</p>
+<ul>
+<li>para <strong>Chern (1998)</strong>, RS.v3 nos da <strong>10,01 mm / 0,23 %</strong>, siendo la de RockSupport (RS.v3) de <strong>9,97 mm / 0,23 %</strong>.</li>
+</ul>
+<div class="fig-note">
+<p><i>Figura —</i> GRC calculada con la solución de Carranza-Torres y LDP seleccionada.</p>
+</div>
+<p><img src="img/tuneles/image6.png" class="fig img-fluid"> <img src="img/tuneles/image7.png" class="fig img-fluid"> <img src="img/tuneles/image8.png" class="fig img-fluid"> <img src="img/tuneles/image9.png" class="fig img-fluid"> <img src="img/tuneles/image10.png" class="fig img-fluid"> <img src="img/tuneles/image11.png" class="fig img-fluid"></p>
+<p>Y accedemos ya a los primeros parámetros fundamentales antes de colocar sostenimiento:</p>
+<ul>
+<li><strong>Presión de campo Po:</strong> 3,51 MPa / <strong>Presión Crítica Pcr:</strong> 1,47 MPa.</li>
+<li><strong>Máxima deformación radial sin sostenimiento:</strong> 32,52 mm (32,38 mm en RS.v3).</li>
+<li><strong>Máximo Radio Plástico sin sostenimiento:</strong> 8,51 m (espesor corona plástica: 4,21 m) —igual que RS.v3—.</li>
+<li><strong>Ratio Rp/R:</strong> 1,98 (valor de la curva de Vlachopoulos a elegir).</li>
+</ul>
+</section>
+<section id="el-efecto-frente-la-pieza-que-faltaba" class="level2">
+<h2 data-anchor-id="el-efecto-frente-la-pieza-que-faltaba">El efecto frente: la pieza que faltaba</h2>
+<p>Si nos planteamos la modelización en software de elementos finitos (RS2, Plaxis, Flac, etc.), es usual plantear varias fases de excavación que permitan primero simular el estado tensional del terreno antes de excavar (estado inicial) y posteriormente una fase que representa un pase de avance de la excavación y la relajación que se produce en el terreno circundante del túnel, justo antes de colocar el sostenimiento. Esto suele simularse mediante lo que se conoce como <strong>“Efecto Frente”</strong>, y se resuelve con la colocación de una presión interior equivalente en el túnel, cuyo valor debemos calcular previamente. Normalmente requiere salir del entorno del software y tratar el tema aparte para, una vez obtenido su resultado, volver al software y representarlo.</p>
+<p>Toda esta incomodidad ha sido resuelta directamente en la web-app, en un apartado dedicado al efecto frente, y que permite obtenerlo todo de manera automática introduciendo el pase de avance y la LDP elegida. Por ejemplo, para Vlachopoulos vemos que la curva naranja seleccionada se corresponde a la de ratio Rp/R ~ 2 (la app representa la exacta, de valor Rp/R = 1,98); podemos, además, graficar el punto, y obtendremos el factor de carga (1−λ) a introducir en el software FEM como presión interior: <strong>0,149 ~ 0,15</strong> (en el caso del Máster MUIECM — RS2 obtenían 0,14 con interpolaciones cuasi-visuales más groseras, teniendo que acudir a exportar datos a un Excel aparte).</p>
+</section>
+<section id="interpretación-estabilidad-y-diseño-del-sostenimiento" class="level2">
+<h2 data-anchor-id="interpretación-estabilidad-y-diseño-del-sostenimiento">Interpretación, estabilidad y diseño del sostenimiento</h2>
+<p>Aparte de esta fantástica herramienta integrada, la web-app nos proporciona ya una serie de instrumentos de interpretación y presentación de resultados:</p>
+<ul>
+<li>los parámetros derivados de <strong>Hoek-Brown</strong> y la <strong>linealización de las envolventes de fallo</strong> en σ₁ vs σ₃ y en τ vs σₙ;</li>
+<li>los <strong>indicadores de estabilidad del macizo</strong> rocoso;</li>
+<li>y una <strong>Recomendación del Sostenimiento tipo</strong> a aplicar en función de la estimación del RMR de la roca, basada en la tabla clásica empleada con gran profusión (citada y documentada por diversos autores), dando además una imagen visual de dicha recomendación, lo que facilita su interpretación, y que puede ser descargada en formato CAD.</li>
+</ul>
+<div class="fig-note">
+<p><i>Figura —</i> envolventes de fallo, indicadores de estabilidad y recomendación de sostenimiento según RMR.</p>
+</div>
+<p><img src="img/tuneles/image12.png" class="fig img-fluid"> <img src="img/tuneles/image13.png" class="fig img-fluid"> <img src="img/tuneles/image14.png" class="fig img-fluid"> <img src="img/tuneles/image15.png" class="fig img-fluid"> <img src="img/tuneles/image16.png" class="fig img-fluid"> <img src="img/tuneles/image17.png" class="fig img-fluid"> <img src="img/tuneles/image18.png" class="fig img-fluid"></p>
+<p>Entonces podemos empezar a diseñar el sostenimiento basándonos en la recomendación: tenemos disponibles las mismas opciones que RockSupport, dando valores perfectamente asimilables con este software; pero además, nos permite obtener y estudiar (incluso variando los parámetros para analizar su sensibilidad):</p>
+<ul>
+<li>la <strong>distribución de tensiones</strong> en el macizo y el campo tensional en la punta de los bulones;</li>
+<li>el <strong>análisis de rotura</strong> (círculo de Mohr) y esfuerzo desviador;</li>
+<li>un análisis gráfico de la <strong>longitud de los bulones</strong> necesaria para obtener un factor de seguridad local <strong>FoS &gt; 1,3–1,5</strong>.</li>
+</ul>
+<p>La solución final también se representa en una sección adecuada para ver su grado de coincidencia con la recomendada y, desde luego, para justificar ajustes sobre la misma de forma técnica y precisa…, todo lo preciso que se puede ser en este campo (*).</p>
+<div class="fig-note">
+<p><i>Figura —</i> diseño del sostenimiento (bulones, cerchas, gunita) y comparación con la recomendación según RMR.</p>
+</div>
+<p><img src="img/tuneles/image19.png" class="fig img-fluid"> <img src="img/tuneles/image20.png" class="fig img-fluid"> <img src="img/tuneles/image21.png" class="fig img-fluid"> <img src="img/tuneles/image22.png" class="fig img-fluid"> <img src="img/tuneles/image23.png" class="fig img-fluid"> <img src="img/tuneles/image24.png" class="fig img-fluid"> <img src="img/tuneles/image25.png" class="fig img-fluid"> <img src="img/tuneles/image26.png" class="fig img-fluid"> <img src="img/tuneles/image27.png" class="fig img-fluid"></p>
+<hr>
+<p>(*) Recordemos las muchas advertencias de los grandes teóricos sobre las cautelas que hay que tener al dar validez a los cálculos desarrollados, por la gran dispersión que presentan las diferentes formulaciones para una misma solución…</p>
+<p>Espero que os haya gustado, y que inspire a mi sobrino en sus futuras tesis, ¿por qué no?</p>
+
+
+
+</section>
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1786715349038" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
+<a href="../posts/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="img\caumax\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Artículos
+</h5>
+<div class="card-text listing-description delink">
+<p>Artículos de hidrología, geotecnia e IA local — migrados desde LinkedIn y ampliados con datos, código, vídeo y apps.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="Z2VvdGVjbmlhJTJDdGFsdWRlcw==" data-listing-date-sort="1765666800000" data-listing-file-modified-sort="1786716920902" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="847">
+<a href="../posts/sobre-los-taludes-en-roca.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_rojo.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sobre los taludes en roca: estereogramas interpretativos
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VvdGVjbmlh'); return false;">geotecnia</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGFsdWRlcw=='); return false;">taludes</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Generación de estereogramas para fallas plana, en cuña, volcamiento y vuelco por flexión, con autodetección de familias de juntas y coeficientes de seguridad.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Dec 14, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="b2NlYW5vZ3JhZiVDMyVBRGElMkNvbGVhamUlMkN3ZWItYXBw" data-listing-date-sort="1763852400000" data-listing-file-modified-sort="1786716967563" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1397">
+<a href="../posts/web-app-para-analisis-del-oleaje.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_azul.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Web-App para Análisis del Oleaje
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('b2NlYW5vZ3JhZiVDMyVBRGE='); return false;">oceanografía</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b2xlYWpl'); return false;">oleaje</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLWFwcA=='); return false;">web-app</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>De la ecuación de dispersión a los ábacos de Wiegel: shoaling, rotura y difracción del oleaje, con los ábacos superpuestos a escala real sobre el mapa del puerto.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Nov 23, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="aGlkcm9sb2clQzMlQURhJTJDd2ViLWFwcA==" data-listing-date-sort="1763247600000" data-listing-file-modified-sort="1786715322700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="884">
+<a href="../posts/continuando-con-la-hidrologia.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_azul.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Continuando con la hidrología: curvas IDF, hietogramas y tránsito por el cauce
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('aGlkcm9sb2clQzMlQURh'); return false;">hidrología</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLWFwcA=='); return false;">web-app</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Una web-app que genera curvas IDF locales por krigeado, hietogramas por bloques alternos y una primera aproximación a los parámetros de Muskingum con más de 1.400 tránsitos.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Nov 16, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="aGlkcm9sb2clQzMlQURhJTJDd2ViLWFwcA==" data-listing-date-sort="1762729200000" data-listing-file-modified-sort="1786720620462" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1318">
+<a href="../posts/sobre-caumax-desarrollos-hidrologicos-en-la-web.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../posts/img/caumax/00.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sobre CAUMAX, desarrollos hidrológicos directos en la web y otras lindeces…
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('aGlkcm9sb2clQzMlQURh'); return false;">hidrología</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLWFwcA=='); return false;">web-app</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>La historia de cómo recuperamos los scripts de hidrología de mi etapa en proyectos y los convertimos en una web-app que supera al plugin CAUMAX de QGIS, con todas las tripas…</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Nov 10, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Adolfo Diz · Ingeniería e IA Local</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Hecho con Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

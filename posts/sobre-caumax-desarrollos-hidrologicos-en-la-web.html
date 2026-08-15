@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-11-10">
+<meta name="description" content="La historia de cómo recuperamos los scripts de hidrología de mi etapa en proyectos y los convertimos en una web-app que supera al plugin CAUMAX de QGIS, con todas las tripas GIS expuestas sobre un DEM de 25 m.">
+
+<title>Sobre CAUMAX, desarrollos hidrológicos directos en la web y otras lindeces… – Adolfo Diz — Ingeniería e IA Local</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../logo/logo_AD_eng_morado.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-52f2520a4c4e4ec35b5f360394ba83ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../logo/logo_AD_eng_negro.png" alt="AD" class="navbar-logo light-content">
+    <img src="../logo/logo_AD_eng_negro.png" alt="AD" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Adolfo Diz — Ingeniería e IA Local</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../posts/index.html"> 
+<span class="menu-text">Artículos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.youtube.com/@adolfodiz2855"> 
+<span class="menu-text">YouTube</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/adolfodiz"> 
+<span class="menu-text">GitHub</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/@adolfodiz2855"> <i class="bi bi-youtube" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/adolfodiz"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Z2VvdGVjbmlh">geotecnia <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aGlkcm9sb2clQzMlQURh">hidrología <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2NlYW5vZ3JhZiVDMyVBRGE=">oceanografía <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2xlYWpl">oleaje <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGFsdWRlcw==">taludes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dCVDMyVCQW5lbGVz">túneles <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2ViLWFwcA==">web-app <span class="quarto-category-count">(2)</span></div></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sobre CAUMAX, desarrollos hidrológicos directos en la web y otras lindeces…</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">hidrología</div>
+    <div class="quarto-category">web-app</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    La historia de cómo recuperamos los scripts de hidrología de mi etapa en proyectos y los convertimos en una web-app que supera al plugin CAUMAX de QGIS, con todas las tripas GIS expuestas sobre un DEM de 25 m.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 10, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="article-hero a-blue">
+<img src="../logo/logo_AD_eng_azul.png" class="img-fluid">
+<div class="ah-meta">
+<p><span class="ah-cat">Ingeniería del agua · Hidrología</span> <span class="ah-date">10 de noviembre de 2025 · migrado desde LinkedIn</span></p>
+</div>
+</div>
+<p><img src="img/caumax/01.png" class="fig img-fluid"></p>
+<p>Durante un par de meses he estado trabajando codo con codo un par de horitas cada domingo con un sobrino que se empeñó en recuperar mis antiguos scripts de cuando yo trabajaba en proyectos, hace ya bastantes años. Muchos estaban escritos en Python y Matlab; otros en R, Visual Basic o incluso en software matemático. Su propuesta era aglutinar los diferentes cálculos y gráficos que realizaban bajo un mismo paquete de cálculo, también por temáticas, y tratar de implementarlo en una plataforma web, de forma que todo —en palabras suyas— <em>“cobrara vida”</em>.</p>
+<p>Como le sobran inteligencia y pasión a partes iguales, y la cosa prometía (no dejaba de intrigarme pensar hasta dónde llegaría), decidí aceptar el reto y enfrascarme con él en tal proyecto, del que debo decir que he disfrutado muchísimo, más por su animada compañía y la luz de sus pensamientos, pero también porque me ha sorprendido ver cómo todo puede cambiar y mejorar en función de los recursos que se aprovechen. Como había todo tipo de cosas, decidimos empezar por una e ir avanzando poco a poco: así que empezamos por la <strong>hidrología</strong>…</p>
+<p>Desde luego he de decir que la complejidad de algunos desarrollos ha requerido el uso de IA, fundamental para resolver cuestiones que un profano sería incapaz, tales como implementar Python en cálculos y procesos en un mapa Google, o dockerizar un desarrollo e implementarlo en una plataforma web, los sucesivos commits y deploys parciales, progresando secuencialmente en los debugs para corregir errores, etc., además de ayudar increíblemente con la programación, mejorando notablemente los algoritmos y sus tiempos de respuesta. Téngase en cuenta que no somos desarrolladores web, y lo hemos hecho solitos, superando muchas dificultades que nos eran ajenas…, de ahí también el problema fundamental y último que comentaré al final.</p>
+<p>Comenzamos con la idea de una web-app destinada a desplegar todo el potencial del plugin de <strong>CAUMAX para QGIS</strong> pero superándolo con creces —ya que siempre pensé que se quedaba muy corto o que dejaba oculta la información que más suele interesarnos, supongo que para evitar un uso indiscriminado o inadecuado; pero cuando tienes la oportunidad de usar la tecnología a tu favor, ¿a quién se le ocurrió que lo adecuado era poner un censor?</p>
+<p>Con esa idea conseguimos, tras algunas depuraciones y reajustes, un más que digno front-end en el que, en apenas 1 minuto de tiempo, teníamos a nuestra disposición todas las capas de información GIS (en formato ráster o vectorial y ajustadas al ámbito de estudio deseado), que nos daban lo mismo que CAUMAX pero:</p>
+<ol type="1">
+<li>con <strong>tamaño de píxel de 25 m</strong> en vez de los 500 m del CAUMAX;</li>
+<li>con <strong>todas las tripas internas expuestas</strong> y, además, ordenadas y con potencial de seguir el estudio por un camino más específico y con mejor soporte SIG;</li>
+<li>con capacidad para <strong>generar un DEM de la zona</strong> (incluso al antojo del usuario) sobre el MDT 25 del CNIG (sin necesidad de ir a descargar cada hoja) y otras muchas cosas, como veréis…</li>
+</ol>
+<p>El usuario puede ingresar su punto de estudio mediante un clic de ratón directamente en el mapa o introduciendo las coordenadas —tanto proyectadas como geográficas—; en cualquier caso, todas se actualizan al momento una vez elegido un método de introducción del punto.</p>
+<p>Se obtiene la cuenca y los resultados del estudio tipo CAUMAX, pero <strong>completos y muy ampliados</strong>, es decir, con la tabla de cuantiles de las lluvias máximas y los caudales para los periodos de retorno habituales o introducidos por el usuario, además del correspondiente al <strong>Caudal Máximo Ordinario</strong>. Todos los resultados quedan explicitados y mostrados en el front-end.</p>
+<section id="pestaña-1" class="level2">
+<h2 data-anchor-id="pestaña-1">PESTAÑA 1</h2>
+<p><img src="img/caumax/02.png" class="fig img-fluid"></p>
+<p>Como puede verse, las descargas GIS incluyen la <strong>Cuenca resultante, los Ríos, el DEM y el punto introducido</strong>. En este caso, todo queda en coordenadas proyectadas ETRS89 UTM zone 30N, dado que se trabaja con toda España (a pesar de las zonas faltantes). La transformación de CRS en caso necesario es inmediata en QGIS o similares. Igualmente las tablas son descargables en formato CSV.</p>
+<p><img src="img/caumax/03.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/04.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/05.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Descargas en formato shapefile o tif y tabla completa de cuantiles de lluvia y caudal para el punto seleccionado.
+</div>
+<p><img src="img/caumax/06.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Leyes de frecuencia GEV o TCEV (o Método Racional para cuencas menores).
+</div>
+<p><img src="img/caumax/07.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Gráfico de la ley de ajuste de caudales.
+</div>
+<p><img src="img/caumax/08.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Gráfico de la ley de ajuste de lluvias.
+</div>
+<blockquote class="blockquote">
+<p>En la segunda pestaña se obtendrá todo sobre un DEM de 25 m de píxel…</p>
+</blockquote>
+</section>
+<section id="pestaña-2" class="level2">
+<h2 data-anchor-id="pestaña-2">PESTAÑA 2</h2>
+<p><img src="img/caumax/09.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/10.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Fuentes empleadas en la web-app (reconocimientos conforme a la GNU — General Public License).
+</div>
+<p><img src="img/caumax/11.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Intersección de la cuenca con las hojas del CNIG.
+</div>
+<p><img src="img/caumax/12.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/13.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Descargas en formato tif del DEM de 25 m de píxel ya completo de la zona de la cuenca con un buffer de 5 km, Uso del Suelo y Número de Curva.
+</div>
+<p><img src="img/caumax/14.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Polígono personalizado para estudios aguas abajo de la cuenca o alternativos.
+</div>
+<p><img src="img/caumax/15.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/16.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/17.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Red de flujo precalculada para inserción de punto fino de salida de cuenca en formato de píxel 25 m, mejorando a CAUMAX.
+</div>
+<p><img src="img/caumax/18.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Posibilidad de delimitar la cuenca por Pysheds (número de celdas) o Pyflwdir (orden de Strahler).
+</div>
+<p><img src="img/caumax/19.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/20.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Cuenca calculada en formato shapefile sobre DEM de píxel 25 m (véase la diferencia de píxel con la cuenca de CAUMAX en rojo).
+</div>
+<p><img src="img/caumax/21.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/22.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/23.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Formatos GIS descargables y parámetros hidrológicos útiles para modelación en HEC-HMS o similares.
+</div>
+<p><img src="img/caumax/24.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Cuenca, Longest Flow Path y Red de ríos (con Strahler en tabla de atributos) — todos descargables en shapefile.
+</div>
+<p><img src="img/caumax/25.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/26.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Perfil longitudinal del río más largo de la cuenca (el que define el tiempo de concentración).
+</div>
+<p><img src="img/caumax/27.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Gráficos finales útiles.
+</div>
+<p><img src="img/caumax/28.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/29.png" class="fig img-fluid"></p>
+<p><img src="img/caumax/30.png" class="fig img-fluid"></p>
+</section>
+<section id="cuál-es-el-problema-final" class="level2">
+<h2 data-anchor-id="cuál-es-el-problema-final">¿Cuál es el problema final?</h2>
+<p>Pues que el uso de recursos es alto y en el momento en que lo pongamos a disposición en la web las plataformas de soporte empezarán a facturarnos por el tráfico en los servidores…, de ahí que requiera un precio, y aunque mi sobrino ha logrado conectarlo con una <strong>gestión integrada de cuentas de usuario mediante suscripciones de pago</strong> (todo un logro de su empeño), el deploy en Railway o plataformas similares se antoja caro para nosotros, sin saber si el precio de la suscripción nos cubrirá los costes. Por ahora lo tenemos en una habitación privada de GitHub, sin saber si algún día podremos compartirlo con todos…</p>
+</section>
+<section id="vídeo-caumax-vs.-la-web-app" class="level2">
+<h2 data-anchor-id="vídeo-caumax-vs.-la-web-app">Vídeo — CAUMAX vs.&nbsp;la web-app</h2>
+<p>En el vídeo comparo el clásico complemento <strong>CAUMAX (Mapa de Caudales Máximos)</strong> de QGIS con la web-app: los mismos cálculos hidrológicos, pero mucho más ágiles, con todos los resultados a la vez y con descargas GIS incluidas. Los ejemplos están cotejados con el manual de CAUMAX, la Confederación Hidrográfica del Ebro y el CEDEX — <strong>caudales clavados al m³/s</strong> — sobre un MDT de 25 m en lugar de los 500 m del plugin. El vídeo muestra la <strong>primera versión</strong> de la web-app; desde entonces se ha <strong>rediseñado y modernizado</strong>.</p>
+<div class="video-wrap">
+<iframe src="https://www.youtube-nocookie.com/embed/Z6WpTrh46AQ" title="CAUMAX vs. Mi App Web de Caudales Máximos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy">
+</iframe>
+</div>
+<p class="video-note">
+Duración ~1:01:12 · capítulos en la descripción · <a href="https://www.youtube.com/@adolfodiz2855">canal de YouTube</a>
+</p>
+</section>
+<section id="pruébala-las-dos-apps-modernas" class="level2">
+<h2 data-anchor-id="pruébala-las-dos-apps-modernas">Pruébala: las dos apps modernas</h2>
+<p>De aquel desarrollo inicial salieron <strong>dos rediseños modernos</strong> que funcionan distinto a la primera versión:</p>
+<p><strong>App-CAUMAX</strong> — la web-app completa de este artículo, <strong>rediseñada y modernizada</strong>: las pestañas 1 y 2 sobre DEM de 25 m, sin depender de Google.</p>
+<ul>
+<li><strong>Demo online</strong>: la <a href="https://adolfodiz-caumax-hidrologia-dash.hf.space">primera versión</a> sigue desplegada en Hugging Face Spaces (<a href="https://huggingface.co/spaces/adolfodiz/caumax-hidrologia-dash">página del Space</a>); si llevaba tiempo sin usarse, el arranque tarda unos segundos. El rediseño actual está en camino de su propio despliegue.</li>
+<li><strong>En tu equipo</strong>: carpeta autocontenida — se copia, doble clic en <code>arrancar_local.bat</code> (Python 3.10+; instala las dependencias solo) y se abre en <code>http://localhost:7860</code>; para detenerla, doble clic en <code>parar.bat</code>. La primera vez descarga las capas GIS (demarcaciones, regiones, red fluvial, MDT…) del CNIG e IGN. <a href="caumax_app_completo">Código</a>.</li>
+</ul>
+<p><strong>App-HidroMaps</strong> — la nueva, antes <em>WhiteToolbox</em>: el flujo rápido de dos clics (cuenca, desagüe, tiempo de concentración y leyes de frecuencia) con mapas <strong>OSM + Esri</strong>, sin depender de Google.</p>
+<ul>
+<li><strong>En tu equipo</strong>: <a href="AD_visor_hidrologia_eea">AD_visor_hidrologia_eea</a> — ejecuta <code>python app_visor.py</code> → <code>http://127.0.0.1:8050</code>.</li>
+<li><strong>Demo online</strong>: próximamente.</li>
+</ul>
+
+
+
+</section>
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1786715349038" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
+<a href="../posts/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="img\caumax\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Artículos
+</h5>
+<div class="card-text listing-description delink">
+<p>Artículos de hidrología, geotecnia e IA local — migrados desde LinkedIn y ampliados con datos, código, vídeo y apps.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="Z2VvdGVjbmlhJTJDdGFsdWRlcw==" data-listing-date-sort="1765666800000" data-listing-file-modified-sort="1786716920902" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="847">
+<a href="../posts/sobre-los-taludes-en-roca.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_rojo.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sobre los taludes en roca: estereogramas interpretativos
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VvdGVjbmlh'); return false;">geotecnia</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGFsdWRlcw=='); return false;">taludes</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Generación de estereogramas para fallas plana, en cuña, volcamiento y vuelco por flexión, con autodetección de familias de juntas y coeficientes de seguridad.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Dec 14, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="Z2VvdGVjbmlhJTJDdCVDMyVCQW5lbGVz" data-listing-date-sort="1765148400000" data-listing-file-modified-sort="1786716940933" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1754">
+<a href="../posts/sobre-la-excavacion-de-tuneles.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_rojo.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Sobre la excavación de túneles, o cómo sobrevivir a los errores de las tesis
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2VvdGVjbmlh'); return false;">geotecnia</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dCVDMyVCQW5lbGVz'); return false;">túneles</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Curvas características GRC, LDP y sostenimiento en túneles: de Kirsch a Carranza-Torres, y una web-app que los resuelve y contrasta con RockSupport y RS2.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Dec 8, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="b2NlYW5vZ3JhZiVDMyVBRGElMkNvbGVhamUlMkN3ZWItYXBw" data-listing-date-sort="1763852400000" data-listing-file-modified-sort="1786716967563" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1397">
+<a href="../posts/web-app-para-analisis-del-oleaje.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_azul.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Web-App para Análisis del Oleaje
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('b2NlYW5vZ3JhZiVDMyVBRGE='); return false;">oceanografía</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('b2xlYWpl'); return false;">oleaje</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLWFwcA=='); return false;">web-app</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>De la ecuación de dispersión a los ábacos de Wiegel: shoaling, rotura y difracción del oleaje, con los ábacos superpuestos a escala real sobre el mapa del puerto.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Nov 23, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="aGlkcm9sb2clQzMlQURhJTJDd2ViLWFwcA==" data-listing-date-sort="1763247600000" data-listing-file-modified-sort="1786715322700" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="884">
+<a href="../posts/continuando-con-la-hidrologia.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="..\logo\logo_AD_eng_azul.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Continuando con la hidrología: curvas IDF, hietogramas y tránsito por el cauce
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('aGlkcm9sb2clQzMlQURh'); return false;">hidrología</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLWFwcA=='); return false;">web-app</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Una web-app que genera curvas IDF locales por krigeado, hietogramas por bloques alternos y una primera aproximación a los parámetros de Muskingum con más de 1.400 tránsitos.</p>
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+
+</div>
+<div class="listing-date">
+Nov 16, 2025
+</div>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Adolfo Diz · Ingeniería e IA Local</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Hecho con Quarto</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
