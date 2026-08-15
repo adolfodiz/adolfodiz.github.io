@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adolfodiz.github.io/sitemap.xml
