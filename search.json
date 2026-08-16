@@ -663,5 +663,12 @@
     "title": "Web-App para Análisis del Oleaje",
     "section": "C. Gráficos de Difracción",
     "text": "C. Gráficos de Difracción\nAunque el programa nos da el espectro completo de gráficos…\n\n\n[gráficos para todos los ángulos de incidencia]\n\npero vamos a darle ‘vida’… (y aquí viene la joya de la corona)\nPodemos superponer a escala real los gráficos sobre el morro del dique en un mapa Google y obtener un mapa de alturas de ola en el interior del puerto:\n\nIntroducimos el Puerto de Algeciras y enseguida el mapa cambia: y hacemos click en el morro del dique…\n\n\nhacemos click con el ratón sobre el mapa, en el morro del dique\n¿Y qué ocurre después?\nPues que sobre el propio mapa nos aparece el ábaco de Wiegel sobre el morro del dique, a escala real sobre la longitud de onda… El ángulo incidente θ lo podemos ajustar antes o después del click (θ = 75º):\n\nAhora, orientamos el ábaco para alinearlo con el dique girándolo con el slider disponible:\n\nY ya fijamos la orientación para obtener valores directamente sobre el mapa…\n\nEn primer lugar podemos ver la solución sobre el punto de usuario:\nKd = 0.1156 → Hdifr = 0.95 m\n\nPero podemos analizar otros puntos de interés, y además, tenemos las isolíneas ya como alturas de ola difractadas: los puntos se van guardando en una tabla que se muestra al final, además de reflejarse directamente en el mapa, dejando una imagen muy útil sobre las diferentes zonas que admiten estar operativas en función de una determinada altura de ola:\n\nAltura de ola en aguas profundas 9.9 m; altura en el morro del dique: 8.26 m\n\n\nMapa de difracción en el interior del puerto"
+  },
+  {
+    "objectID": "posts/web-app-para-analisis-del-oleaje.html#pruébala-la-web-app-del-análisis-del-oleaje",
+    "href": "posts/web-app-para-analisis-del-oleaje.html#pruébala-la-web-app-del-análisis-del-oleaje",
+    "title": "Web-App para Análisis del Oleaje",
+    "section": "Pruébala: la web-app del análisis del oleaje",
+    "text": "Pruébala: la web-app del análisis del oleaje\nToda la funcionalidad de este artículo —propagación, asomeramiento y rotura del oleaje, y difracción con los ábacos de Wiegel superpuestos a escala real sobre el mapa del puerto— está reunida en la web-app de Análisis del Oleaje.\n\nDemo online: desplegada en Render (abrir la app); si llevaba tiempo sin usarse, el primer arranque tarda unos segundos."
   }
 ]
