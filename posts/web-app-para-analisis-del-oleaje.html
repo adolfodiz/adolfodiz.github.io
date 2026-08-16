@@ -140,15 +140,15 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Web-App para Análisis del Oleaje – Adolfo Diz — Ingeniería e IA Local">
 <meta property="og:description" content="De la ecuación de dispersión a los ábacos de Wiegel: shoaling, rotura y difracción del oleaje, con los ábacos superpuestos a escala real sobre el mapa del puerto.">
-<meta property="og:image" content="https://adolfodiz.github.io/logo/logo_AD_eng_azul.png">
+<meta property="og:image" content="https://adolfodiz.github.io/posts/img/oleaje/00.png">
 <meta property="og:site_name" content="Adolfo Diz — Ingeniería e IA Local">
-<meta property="og:image:height" content="2953">
-<meta property="og:image:width" content="945">
+<meta property="og:image:height" content="503">
+<meta property="og:image:width" content="894">
 <meta name="twitter:title" content="Web-App para Análisis del Oleaje – Adolfo Diz — Ingeniería e IA Local">
 <meta name="twitter:description" content="De la ecuación de dispersión a los ábacos de Wiegel: shoaling, rotura y difracción del oleaje, con los ábacos superpuestos a escala real sobre el mapa del puerto.">
-<meta name="twitter:image" content="https://adolfodiz.github.io/logo/logo_AD_eng_azul.png">
-<meta name="twitter:image-height" content="2953">
-<meta name="twitter:image-width" content="945">
+<meta name="twitter:image" content="https://adolfodiz.github.io/posts/img/oleaje/00.png">
+<meta name="twitter:image-height" content="503">
+<meta name="twitter:image-width" content="894">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://adolfodiz.github.io/posts/web-app-para-analisis-del-oleaje.html">
 </head>
@@ -259,174 +259,151 @@ window.Quarto = {
 <p><span class="ah-cat">Ingeniería del agua · Oceanografía</span> <span class="ah-date">23 de noviembre de 2025 · migrado desde LinkedIn</span></p>
 </div>
 </div>
-<section id="section" class="level1">
-<h1><img src="img/oleaje/image1.png" class="fig-portada img-fluid"></h1>
 <p><em>Los buenos profesores tienen la capacidad de hacerte entender sin artificios innecesarios.</em></p>
 <p>Esto va dedicado a esos raros especímenes, por sus enseñanzas, por sus escritos…</p>
 <ul>
-<li><p>a Miguel Ángel Losada, quien nos enseñó a deducir la ecuación de dispersión desde el esquema del sólido elemental sin memorizar absolutamente nada; y amar este mundo de locos sin saber si naufragarás.</p></li>
-<li><p>a Vicente Negro, quien nos animó a deconstruirnos mentalmente para ver si las tesis podían resistir el embate, como diques frente a temporales.</p></li>
-<li><p>a Raúl Medina e Íñigo Losada, quienes nos instaron a hacernos siempre una pregunta más, sin dar la respuesta por sabida.</p></li>
-<li><p>y a tantos otros del difícil y entretenido mundo oceanográfico, que entregan su pasión cada vez que hablan de ello: Gregorio Gómez Pina, Gabriel Chamorro, etc.</p></li>
+<li>a <strong>Miguel Ángel Losada</strong>, quien nos enseñó a deducir la ecuación de dispersión desde el esquema del sólido elemental sin memorizar absolutamente nada; y amar este mundo de locos sin saber si naufragarás; y a su biblioteca, a disposición de todos…</li>
 </ul>
-<p>Si consideramos a don Ramón Iribarren como el padre de la escuela española -entre las mejores del mundo en este tema- podríamos destacar que una fórmula simple, al estilo de Newton y Einstein, es como el destilado de un buen orujo lebaniego, no es perfecto, pero contiene todo el saber en una minúscula porción: de ahí que nuestro querido Gabriel le dedicara a Vicente el esquema de su fórmula simple para diques en talud como emblema de una camiseta juvenil en conexión con la genialidad simplificadora de Iribarren con su famoso número para describir la forma de rompeolas en playas…, mundo de locos, ya os digo…</p>
-<p><img src="img/oleaje/image2.png" class="img-fluid"></p>
-<p><img src="img/oleaje/image3.png" class="img-fluid"><img src="img/oleaje/image4.png" class="img-fluid"></p>
-<p>Hace ya mucho tiempo que no abordo obras marítimas o costeras, pero mis antiguos scripts tenían un potencial bastante grande para adaptarse a las nuevas tecnologías y sobre todo, a las nuevas capacidades de resoluciones numéricas que permiten los procesadores de hoy día -y las potentes memorias gráficas-, así que mi sobrino insistió en aprovechar todo este potencial.</p>
-<p><img src="img/oleaje/image5.png" class="img-fluid"></p>
-<ol type="1">
-<li>Análisis de Dispersión y Rotura</li>
-</ol>
+<p><img src="img/oleaje/01.png" class="fig img-fluid"></p>
+<p><img src="img/oleaje/02.png" class="fig img-fluid"></p>
+<p><img src="img/oleaje/03.png" class="fig img-fluid"></p>
+<ul>
+<li>a <strong>Vicente Negro</strong>, quien nos animó a deconstruirnos mentalmente para ver si las tesis podían resistir el embate, como diques frente a temporales.</li>
+<li>a <strong>Raúl Medina e Íñigo Losada</strong>, quienes nos instaron a hacernos siempre una pregunta más, sin asumir lo aceptado, tan raro hoy día.</li>
+<li>y a tantos otros del difícil y entretenido mundo oceanográfico, que entregan su pasión cada vez que hablan de ello: Gregorio Gómez Pina, Gabriel Chamorro, etc.</li>
+</ul>
+<p>Si consideramos a don <strong>Ramón Iribarren</strong> como el padre de la escuela española —entre las mejores del mundo en este tema— podríamos destacar que una fórmula simple, al estilo de Newton y Einstein, es como el destilado de un buen orujo lebaniego: no es perfecto, pero contiene todo el saber en una minúscula porción: de ahí que nuestro querido Gabriel le dedicara a Vicente el esquema de su fórmula simple para diques en talud como emblema de una camiseta de moda, en conexión con la genialidad simplificadora de Iribarren con su famoso número para describir la forma de rompeolas en playas…, mundo de locos, ya os digo…</p>
+<p><img src="img/oleaje/04.png" class="fig img-fluid"></p>
+<p>y la de Vicente Negro, a la que Gabriel le dedicó la imagen:</p>
+<p><img src="img/oleaje/05.png" class="fig img-fluid"></p>
+<p><em>imagen de Gabriel Chamorro</em></p>
+<p>Hace ya mucho tiempo que no abordo obras marítimas o costeras, pero mis antiguos scripts tenían un potencial bastante grande para adaptarse a las nuevas tecnologías y sobre todo, a las nuevas capacidades de resoluciones numéricas que permiten los procesadores de hoy día —y las potentes memorias gráficas—, así que mi sobrino insistió en aprovechar todo este potencial.</p>
+<p>En la app se nos ofrece una entrada de datos doble: la primera sobre <strong>propagación de oleaje, asomeramiento y rotura</strong>:</p>
+<p><img src="img/oleaje/06.png" class="fig img-fluid"></p>
+<section id="a.-análisis-de-dispersión-y-rotura" class="level2">
+<h2 data-anchor-id="a.-análisis-de-dispersión-y-rotura">A. Análisis de Dispersión y Rotura</h2>
 <p>Esta sección caracteriza cómo una ola que viaja desde aguas profundas cambia sus propiedades al llegar a una zona de profundidad <code>d</code>.</p>
 <section id="parámetros-de-entrada" class="level3">
 <h3 data-anchor-id="parámetros-de-entrada">Parámetros de Entrada</h3>
 <ul>
-<li><p><strong>Profundidad (d):</strong> La profundidad del agua en el punto de interés.</p></li>
-<li><p><strong>Período (T):</strong> El tiempo que tardan dos crestas de ola consecutivas en pasar por un punto. Es el parámetro más constante del oleaje.</p></li>
-<li><p><strong>Altura de Ola en aguas Profundas (Ho):</strong> La altura de la ola en aguas donde la profundidad no afecta a su comportamiento.</p></li>
-<li><p><strong>Pendiente del Lecho (mi):</strong> La inclinación del fondo marino (m/m). Ayuda a determinar cómo romperá la ola.</p></li>
+<li><strong>Profundidad (d):</strong> la profundidad del agua en el punto de interés (batimétrica en el morro del dique, por ejemplo).</li>
+<li><strong>Período (T):</strong> el tiempo que tardan dos crestas de ola consecutivas en pasar por un punto. Es el parámetro más constante del oleaje.</li>
+<li><strong>Altura de Ola en aguas Profundas (Ho):</strong> la altura de la ola en aguas donde la profundidad no afecta a su comportamiento.</li>
+<li><strong>Pendiente del Lecho (mi):</strong> la inclinación del fondo marino (m/m). Ayuda a determinar cómo romperá la ola.</li>
 </ul>
-<p><img src="img/oleaje/image6.png" class="img-fluid"></p>
-<p>Cálculos Clave</p>
-<ul>
-<li><strong>Longitud de Onda (L):</strong> La distancia horizontal entre dos crestas. Se calcula resolviendo la ecuación de dispersión:</li>
-</ul>
-<p><img src="img/oleaje/image7.png" class="img-fluid"></p>
-<ul>
-<li><strong>Asomeramiento (Shoaling):</strong> A medida que la ola entra en aguas menos profundas, su altura cambia. El <strong>Coeficiente de Shoaling (Ks)</strong> cuantifica este cambio. Una ola asomerada tiene una altura</li>
-</ul>
-<p><img src="img/oleaje/image8.png" class="img-fluid"></p>
-<ul>
-<li><strong>Rotura de la Ola:</strong> Una ola no puede crecer indefinidamente. Rompe cuando su altura se vuelve demasiado grande para la profundidad local. Calculamos esta altura límite (<code>Hb</code>) según varios criterios:</li>
-</ul>
-<p><img src="img/oleaje/image9.png" class="img-fluid"></p>
-<p><img src="img/oleaje/image10.png" class="img-fluid"></p>
 </section>
-<section id="explicación-detallada" class="level2">
-<h2 data-anchor-id="explicación-detallada">Explicación detallada</h2>
-<p>La estrella representa el&nbsp;<strong>ESTADO REAL</strong>&nbsp;de la ola en tu caso de estudio en esa profundidad específica (<em>d</em>=15 m), calculado únicamente por Conservación de Energía (asomeramiento o&nbsp;<em>shoaling</em>), sin tener en cuenta todavía si rompe o no.</p>
-<p>Véase como una comparación entre&nbsp;<strong>Solicitación</strong>&nbsp;vs&nbsp;<strong>Resistencia</strong>:</p>
+<section id="cálculos-clave" class="level3">
+<h3 data-anchor-id="cálculos-clave">Cálculos Clave</h3>
+<ul>
+<li><strong>Longitud de Onda (L):</strong> la distancia horizontal entre dos crestas. Se calcula resolviendo la ecuación de dispersión vista anteriormente.</li>
+<li><strong>Asomeramiento (Shoaling):</strong> a medida que la ola entra en aguas menos profundas, su altura cambia. El <strong>Coeficiente de Shoaling (Ks)</strong> cuantifica este cambio. Una ola asomerada tiene una altura…</li>
+</ul>
+<p><img src="img/oleaje/07.png" class="fig img-fluid"></p>
+<ul>
+<li><strong>Rotura de la Ola:</strong> una ola no puede crecer indefinidamente. Rompe cuando su altura se vuelve demasiado grande para la profundidad local. Calculamos esta altura límite (<code>Hb</code>) según varios criterios:</li>
+</ul>
 <ol type="1">
-<li><p><strong>Las Curvas (Roja, Verde, etc.):</strong>&nbsp;Representan el&nbsp;<strong>Límite Físico (El Techo)</strong>.</p>
+<li><p><strong>Fórmula de McCowan (1894).</strong> Es la más sencilla y se usa para estimaciones rápidas en fondos planos: <code>Hb = 0.78 · db</code>.</p></li>
+<li><p><strong>Fórmulas Empíricas (Pendiente + Peralte).</strong> Estas fórmulas calculan el índice de rotura <code>γ = Hb/db</code> de forma dinámica.</p>
 <ul>
-<li>Nos dicen:&nbsp;<em>“En esta profundidad relativa, el agua no puede soportar una ola con un índice&nbsp;γ&nbsp;mayor a este valor. <strong>Si pasas de aquí, la ola rompe</strong>”</em>.</li>
-</ul></li>
-<li><p><strong>La Estrella Azul (caso estudiado):</strong>&nbsp;Representa la&nbsp;<strong>Solicitación (La Ola)</strong>.</p>
-<ul>
-<li><p>Sus coordenadas son:&nbsp;(<em>x</em>,<em>y</em>) = (<em>d</em><sub>15</sub>​/<em>L</em><sub>0</sub>​,&nbsp;<em>H<sub>shoaling</sub></em><sub>​</sub>/<em>d</em><sub>15</sub>​)</p></li>
-<li><p><em>Es decir, es la altura que la ola&nbsp;quiere tener&nbsp;en d = 15m basada en la energía que trae desde alta mar.</em></p></li>
+<li><strong>A) Fórmula de Goda (1970).</strong> Es la más utilizada en normativas de diseño (como la ROM en España o el CEM en EE. UU.) porque cubre un rango muy amplio de condiciones. Goda no da un índice simple, sino una relación directa para calcular <code>Hb</code>:</li>
 </ul></li>
 </ol>
-</section>
-<section id="cómo-interpretar-su-posición-respecto-a-las-curvas-p.e.-de-goda" class="level2">
-<h2 data-anchor-id="cómo-interpretar-su-posición-respecto-a-las-curvas-p.e.-de-goda">¿Cómo interpretar su posición respecto a las curvas, p.e. de Goda?</h2>
+<p><img src="img/oleaje/08.png" class="fig img-fluid"></p>
+<p>Donde: - <code>A</code>: constante que suele ser 0.17 (para olas regulares). - <code>L0</code>: longitud de onda en aguas profundas. - <code>tanβ</code> (o <code>m</code>): la pendiente del fondo marino.</p>
 <ul>
-<li><p><strong>Si la estrella está POR DEBAJO de la curva roja (Goda):</strong></p>
-<ul>
-<li><p>Significa que la ola cabe perfectamente en esa profundidad. La altura que trae (<em>Hshoaling</em>​) es menor que la altura máxima permitida (<em>Hb</em>​).</p></li>
-<li><p><strong>Estado:</strong>&nbsp;NO HA ROTO (Estable).</p></li>
-</ul></li>
-<li><p><strong>Si la estrella está ENCIMA o TOCANDO la curva roja:</strong></p>
-<ul>
-<li><p>Significa que la ola teóricamente&nbsp;<em>quería</em>&nbsp;tener esa altura por asomeramiento, pero el fondo no la deja. Físicamente es imposible que la estrella esté por encima.</p></li>
-<li><p><strong>Interpretación:</strong>&nbsp;La ola&nbsp;<strong>YA HA ROTO</strong>&nbsp;antes de llegar a ese punto o está rompiendo justo ahí.</p></li>
-</ul></li>
+<li><strong>B) Fórmula de Sunamura (1980/1984).</strong> Es muy popular en investigación por su formato de “ley de potencias”. Calcula explícitamente el coeficiente de rotura:</li>
 </ul>
-<p><strong>En resumen:</strong>&nbsp;La estrella es un “punto de estado” independiente. El gráfico sirve precisamente para ver si ese punto ha cruzado o no la “<em>línea de la muerte</em>” (la curva de Goda o la que se tome como referencia).</p>
-<p><img src="img/oleaje/image11.png" class="img-fluid"></p>
+<p><img src="img/oleaje/09.png" class="fig img-fluid"></p>
+<p>Donde: - <code>H0/L0</code>: peralte de la ola en aguas profundas.</p>
+<p><em>Explicación:</em> si la pendiente (<code>tanβ</code>) es mayor (playa empinada), el número crece (la ola rompe más alta). Si el peralte (<code>H0/L0</code>) es mayor (ola muy picuda), el exponente negativo hace que el número baje (rompe antes).</p>
 <p>Pongamos un ejemplo muy simple de uno de los libros de Vicente Negro, al que intentaremos darle otro giro de tuerca más:</p>
+</section>
 </section>
 <section id="ejemplo-práctico" class="level2">
 <h2 data-anchor-id="ejemplo-práctico">Ejemplo práctico</h2>
-<p><em>El puerto de la figura adjunta tiene su bocana en 15 m de profundidad y está sometido a un oleaje medio de 7 s de periodo. El frente de ondas queda dibujado en la planta adjunta y el rayo forma 105° con la última alineación del dique de abrigo. Determinar el coeficiente de difracción en el muelle en estudio empleando tanto el diagrama de Wiegel como la solución analítica.</em></p>
-<p><img src="img/oleaje/image12.png" class="img-fluid"></p>
-<p><img src="img/oleaje/image13.png" class="img-fluid"></p>
+<p>El puerto de la figura adjunta tiene su bocana en 15 m de profundidad y está sometido a un oleaje medio de 7 s de periodo. El frente de ondas queda dibujado en la planta adjunta y el rayo forma 105° con la última alineación del dique de abrigo. Determinar el <strong>coeficiente de difracción</strong> en el muelle en estudio empleando tanto el diagrama de Wiegel como la solución analítica.</p>
+<p><img src="img/oleaje/10.png" class="fig img-fluid"></p>
+<p>Vemos por la forma —aunque girada—, que podría tratarse del <strong>Puerto de Algeciras</strong>…</p>
+<p><img src="img/oleaje/11.png" class="fig img-fluid"></p>
 <p>Introducimos los datos conocidos en el panel del usuario (y completamos los no conocidos para tener una aproximación a un caso de temporal fuerte):</p>
-<p><img src="img/oleaje/image14.png" class="img-fluid">d = 15 m / T = 7s / r = 500 m / β = 30º</p>
-<p><img src="img/oleaje/image15.png" class="img-fluid"></p>
+<p><img src="img/oleaje/12.png" class="fig img-fluid"></p>
 <p>El programa enseguida arroja una completa tabla de cálculos, tanto intermedios como finales:</p>
-<p><img src="img/oleaje/image16.png" class="img-fluid"></p>
+<p><img src="img/oleaje/13.png" class="fig img-fluid"></p>
 <p>Podemos comprobar alguno de ellos a mano:</p>
-<p><em>En primer lugar se calcula la longitud de onda en profundidades indefinidas, resultando 76,50 m (con fórmula no simplificada). En segundo lugar se determina la longitud de onda a pie de dique, obteniendo 67,60 m</em></p>
+<p><img src="img/oleaje/14.png" class="fig img-fluid"></p>
 </section>
 <section id="gráficos-de-análisis" class="level2">
 <h2 data-anchor-id="gráficos-de-análisis">Gráficos de Análisis</h2>
+<section id="shoaling-y-rotura-por-profundidad" class="level3">
+<h3 data-anchor-id="shoaling-y-rotura-por-profundidad">1. Shoaling y Rotura por Profundidad</h3>
+<p>Este gráfico muestra cómo el coeficiente de shoaling <code>Ks</code> (líneas de colores) cambia con la profundidad relativa <code>d/Lo</code>. La línea discontinua naranja representa el límite de rotura de McCowan (<code>Hb/Ho</code>): si la curva de <code>Ks</code> cruza esta línea, la ola ha roto. Los ejes secundarios te permiten leer los valores en metros (<code>d</code> y <code>H</code>) directamente.</p>
+<p><img src="img/oleaje/15.png" class="fig img-fluid"></p>
 </section>
-<section id="shoaling-y-rotura-por-profundidad" class="level2">
-<h2 data-anchor-id="shoaling-y-rotura-por-profundidad">1. Shoaling y Rotura por Profundidad:</h2>
-<ul>
-<li><p>Este gráfico muestra cómo el coeficiente de shoaling <code>Ks</code> (líneas de colores) cambia con la profundidad relativa <code>d/Lo</code>.</p></li>
-<li><p>La línea discontinua naranja representa el límite de rotura de Mc-Cowan (<code>Hb/Ho</code>). Si la curva de <code>Ks</code> cruza esta línea, la ola ha roto.</p></li>
-<li><p>Los ejes secundarios te permiten leer los valores en metros (<code>d</code> y <code>H</code>) directamente.</p></li>
-</ul>
-<p><img src="img/oleaje/image17.png" class="img-fluid"></p>
+<section id="coeficientes-de-rotura" class="level3">
+<h3 data-anchor-id="coeficientes-de-rotura">2. Coeficientes de Rotura</h3>
+<p>Este gráfico muestra el coeficiente <code>Hb/d</code> según Goda para diferentes pendientes del fondo. Puedes ver cómo una pendiente más suave (ej. 1/50) resulta en un coeficiente de rotura menor. La línea roja representa el coeficiente para la pendiente que has introducido en el criterio de Goda (regular waves).</p>
+<p><img src="img/oleaje/16.png" class="fig img-fluid"></p>
+<p><img src="img/oleaje/17.png" class="fig img-fluid"></p>
+<p><img src="img/oleaje/18.png" class="fig img-fluid"></p>
+<p>La segunda parte del panel de entrada de datos está destinada a simular los <strong>ábacos de Wiegel</strong> para el cálculo de la difracción del oleaje en un dique, pero aprovechando los modernos recursos disponibles:</p>
 </section>
-<section id="coeficientes-de-rotura" class="level2">
-<h2 data-anchor-id="coeficientes-de-rotura">2. Coeficientes de Rotura:</h2>
-<ul>
-<li><p>Este gráfico muestra el coeficiente <code>Hb/d</code> según Goda para diferentes pendientes del fondo.</p></li>
-<li><p>Puedes ver cómo una pendiente más suave (ej. 1/50) resulta en un coeficiente de rotura menor.</p></li>
-<li><p>La línea roja representa el coeficiente para la pendiente que has introducido.</p></li>
-</ul>
-<p><img src="img/oleaje/image18.png" class="img-fluid"></p>
 </section>
-<section id="análisis-de-difracción-wiegel" class="level2">
-<h2 data-anchor-id="análisis-de-difracción-wiegel">Análisis de Difracción (Wiegel)</h2>
+<section id="b.-análisis-de-difracción-wiegel" class="level2">
+<h2 data-anchor-id="b.-análisis-de-difracción-wiegel">B. Análisis de Difracción (Wiegel)</h2>
 <p>Esta sección calcula cómo la energía de la ola (y por tanto su altura) se redistribuye al pasar por el borde de una estructura, como un dique.</p>
-<p><img src="img/oleaje/image19.png" class="img-fluid"><img src="img/oleaje/image20.png" class="img-fluid"></p>
 <section id="parámetros-de-entrada-1" class="level3">
 <h3 data-anchor-id="parámetros-de-entrada-1">Parámetros de Entrada</h3>
 <ul>
-<li><p><strong>Distancia ‘r’:</strong> Distancia radial desde la punta o morro del dique.</p></li>
-<li><p><strong>Ángulo ‘beta’:</strong> Ángulo en grados medido desde el eje del dique.</p></li>
+<li><strong>Distancia ‘r’:</strong> distancia radial desde la punta o morro del dique.</li>
+<li><strong>Ángulo ‘beta’:</strong> ángulo en grados medido desde el eje del dique.</li>
 </ul>
-<blockquote class="blockquote">
-<p><em>Vemos que el ángulo del rayo de la ola incidente es de 105-30 (= 90-15) = 75º</em></p>
-</blockquote>
+<p><img src="img/oleaje/19.png" class="fig img-fluid"></p>
+<p>Vemos que el ángulo del rayo de la ola incidente es de 105−30 (= 90−15) = <strong>75º</strong></p>
 </section>
 <section id="resultados" class="level3">
 <h3 data-anchor-id="resultados">Resultados</h3>
 <ul>
-<li><p><strong>Coeficiente de Difracción (kd):</strong> Es el ratio entre la altura de la ola en un punto después de la difracción y la altura de la ola incidente: K_d = H / H_i. Un valor de <code>kd=0.5</code> significa que la ola en ese punto tiene la mitad de la altura que la ola original.</p></li>
-<li><p><strong>Ábacos de Wiegel:</strong> Cada gráfico muestra un mapa de los valores de <code>kd</code> para un ángulo de ataque de la ola incidente (θ). Las zonas “calientes” (rojo/naranja) son donde la altura de la ola se mantiene o incluso aumenta, mientras que las zonas “frías” (azul/verde) son las zonas de “sombra” o abrigo del dique.</p></li>
+<li><strong>Coeficiente de Difracción (kd):</strong> es el ratio entre la altura de la ola en un punto después de la difracción y la altura de la ola incidente: <code>Kd = H / Hi</code>.</li>
+<li><strong>Ábacos de Wiegel:</strong> cada gráfico muestra un mapa de los valores de <code>kd</code> para un ángulo de ataque de la ola incidente (θ). Las zonas “calientes” (rojo/naranja) son donde la altura de la ola se mantiene o incluso aumenta, mientras que las zonas “frías” (azul/verde) son las zonas de “sombra” o abrigo del dique.</li>
 </ul>
-<p><img src="img/oleaje/image21.png" class="img-fluid"></p>
+<p><img src="img/oleaje/20.png" class="fig img-fluid"></p>
+<p><img src="img/oleaje/21.png" class="fig img-fluid"></p>
 </section>
 </section>
-<section id="gráficos-de-difracción" class="level2">
-<h2 data-anchor-id="gráficos-de-difracción">Gráficos de Difracción</h2>
-<p><img src="img/oleaje/image22.png" class="img-fluid"></p>
-</section>
-<section id="aquí-tenemos-la-solución-del-ejemplo" class="level2">
-<h2 data-anchor-id="aquí-tenemos-la-solución-del-ejemplo">Aquí tenemos la solución del ejemplo:</h2>
-</section>
-<section id="kd-0.1156-para-θ-75º-áng.-inc." class="level2">
-<h2 data-anchor-id="kd-0.1156-para-θ-75º-áng.-inc.">Kd = 0.1156 para θ = 75º (áng. inc.)</h2>
+<section id="c.-gráficos-de-difracción" class="level2">
+<h2 data-anchor-id="c.-gráficos-de-difracción">C. Gráficos de Difracción</h2>
 <p>Aunque el programa nos da el espectro completo de gráficos…</p>
-<p><img src="img/oleaje/image23.png" class="img-fluid"></p>
-<p><img src="img/oleaje/image24.png" class="img-fluid"></p>
-</section>
-<section id="pero-vamos-a-darle-vida" class="level2">
-<h2 data-anchor-id="pero-vamos-a-darle-vida">pero vamos a darle ‘vida’…</h2>
-<p><img src="img/oleaje/image25.png" class="img-fluid"><img src="img/oleaje/image26.png" class="img-fluid"> Introducimos el Puerto de Algeciras y enseguida el mapa cambia: y hacemos click en el morro del dique…</p>
-<p><img src="img/oleaje/image200.png" class="img-fluid"><img src="img/oleaje/image28.png" class="img-fluid"><img src="img/oleaje/image29.png" class="img-fluid"></p>
+<p><img src="img/oleaje/22.png" class="fig img-fluid"></p>
+<p><img src="img/oleaje/23.png" class="fig img-fluid"></p>
+<p><em>[gráficos para todos los ángulos de incidencia]</em></p>
+<p><img src="img/oleaje/24.png" class="fig img-fluid"></p>
+<p>pero vamos a darle ‘vida’… (y aquí viene la joya de la corona)</p>
+<p>Podemos superponer <strong>a escala real</strong> los gráficos sobre el morro del dique en un mapa Google y obtener un <strong>mapa de alturas de ola en el interior del puerto</strong>:</p>
+<p><img src="img/oleaje/25.png" class="fig img-fluid"></p>
+<p>Introducimos el Puerto de Algeciras y enseguida el mapa cambia: y hacemos click en el morro del dique…</p>
+<p><img src="img/oleaje/26.png" class="fig img-fluid"></p>
+<p><img src="img/oleaje/27.png" class="fig img-fluid"></p>
+<p><em>hacemos click con el ratón sobre el mapa, en el morro del dique</em></p>
 <p>¿Y qué ocurre después?</p>
-<p>Pues que sobre el propio mapa nos aparece el ábaco de Wiegel sobre el morro del dique, a escala real sobre la longitud de onda…</p>
-<p>El ángulo incidente θ lo podemos ajustar antes o después del click (θ = 75º) <img src="img/oleaje/image30.png" class="img-fluid"></p>
-<p>Orientamos el ábaco para alinearlo con el dique:</p>
-<p><img src="img/oleaje/image31.png" class="img-fluid"> <img src="img/oleaje/image32.png" class="img-fluid"></p>
-<p>Y ya fijamos la orientacion para obtener valores… <img src="img/oleaje/image33.png" class="img-fluid"></p>
-<p>En primer lugar podemos ver la solución sobre el punto de usuario: Kd = 0.1156 🡪 H<sub>difr</sub>= 0.95 m</p>
-<p><img src="img/oleaje/image34.png" class="img-fluid"></p>
-<p>Pero podemos analizar otros puntos de interés, y además, tenemos las isolíneas ya como alturas de ola difractadas: los puntos se van guardando en una tabla que se muestra al final, además de reflejarse directamente en el mapa, dejando una imagen muy útil sobre las diferentes zonas que admiten estar operativas en función de una determinada altura de ola:</p>
-<p><img src="img/oleaje/image35.png" class="img-fluid"></p>
-<p><img src="img/oleaje/image36.png" class="img-fluid"></p>
-<p><img src="img/oleaje/image37.png" class="img-fluid"></p>
-<p><img src="img/oleaje/image38.png" class="img-fluid"><img src="img/oleaje/image39.png" class="img-fluid"><img src="img/oleaje/image40.png" class="img-fluid"><img src="img/oleaje/image41.png" class="img-fluid"></p>
+<p>Pues que sobre el propio mapa nos aparece el <strong>ábaco de Wiegel sobre el morro del dique</strong>, a escala real sobre la longitud de onda… El ángulo incidente θ lo podemos ajustar antes o después del click (<strong>θ = 75º</strong>):</p>
+<p><img src="img/oleaje/28.png" class="fig img-fluid"></p>
+<p>Ahora, orientamos el ábaco para alinearlo con el dique girándolo con el slider disponible:</p>
+<p><img src="img/oleaje/29.png" class="fig img-fluid"></p>
+<p>Y ya fijamos la orientación para obtener valores directamente sobre el mapa…</p>
+<p><img src="img/oleaje/30.png" class="fig img-fluid"></p>
+<p>En primer lugar podemos ver la solución sobre el punto de usuario:</p>
+<p><strong>Kd = 0.1156 → H<sub>difr</sub> = 0.95 m</strong></p>
+<p><img src="img/oleaje/31.png" class="fig img-fluid"></p>
+<p>Pero podemos analizar otros puntos de interés, y además, tenemos las <strong>isolíneas ya como alturas de ola difractadas</strong>: los puntos se van guardando en una tabla que se muestra al final, además de reflejarse directamente en el mapa, dejando una imagen muy útil sobre las diferentes zonas que admiten estar operativas en función de una determinada altura de ola:</p>
+<p><img src="img/oleaje/32.png" class="fig img-fluid"></p>
+<p><em>Altura de ola en aguas profundas 9.9 m; altura en el morro del dique: 8.26 m</em></p>
+<p><img src="img/oleaje/33.png" class="fig img-fluid"></p>
+<p><img src="img/oleaje/34.png" class="fig img-fluid"></p>
+<p><em>Mapa de difracción en el interior del puerto</em></p>
 
 
 
-</section>
 </section>
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
@@ -434,7 +411,7 @@ window.Quarto = {
 <div class="g-col-1" data-index="0" data-listing-file-modified-sort="1786715349038" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
 <a href="../posts/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img loading='lazy' src="img\idf\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="img\oleaje\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Artículos
