@@ -140,15 +140,15 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Sobre la excavación de túneles, o cómo sobrevivir a los errores de las tesis – Adolfo Diz — Ingeniería e IA Local">
 <meta property="og:description" content="Curvas características GRC, LDP y sostenimiento en túneles: de Kirsch a Carranza-Torres, y una web-app que los resuelve y contrasta con RockSupport y RS2.">
-<meta property="og:image" content="https://adolfodiz.github.io/logo/logo_AD_eng_rojo.png">
+<meta property="og:image" content="https://adolfodiz.github.io/posts/img/tuneles/00.png">
 <meta property="og:site_name" content="Adolfo Diz — Ingeniería e IA Local">
-<meta property="og:image:height" content="2953">
-<meta property="og:image:width" content="945">
+<meta property="og:image:height" content="566">
+<meta property="og:image:width" content="1006">
 <meta name="twitter:title" content="Sobre la excavación de túneles, o cómo sobrevivir a los errores de las tesis – Adolfo Diz — Ingeniería e IA Local">
 <meta name="twitter:description" content="Curvas características GRC, LDP y sostenimiento en túneles: de Kirsch a Carranza-Torres, y una web-app que los resuelve y contrasta con RockSupport y RS2.">
-<meta name="twitter:image" content="https://adolfodiz.github.io/logo/logo_AD_eng_rojo.png">
-<meta name="twitter:image-height" content="2953">
-<meta name="twitter:image-width" content="945">
+<meta name="twitter:image" content="https://adolfodiz.github.io/posts/img/tuneles/00.png">
+<meta name="twitter:image-height" content="566">
+<meta name="twitter:image-width" content="1006">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://adolfodiz.github.io/posts/sobre-la-excavacion-de-tuneles.html">
 </head>
@@ -260,7 +260,7 @@ window.Quarto = {
 </div>
 <p>Uno de los temas más recurrentes en las obras lineales en un país montañoso como el nuestro es el de los túneles. Y para abordarlos con unas mínimas garantías en el ejercicio profesional tendrás que echar mano no sólo de los Jiménez Salas o los Ingeo-Túneles, sino recurrir a las fuentes originales cuando sea necesario, o sea, a las tesis de los autores que a menudo dan nombre propio a las formulaciones existentes. En otras épocas esto no era tan sencillo, y tenías que contar con la ayuda de algún catedrático o, si había suerte, con la biblioteca del Colegio. Pero cualquiera que haya revisado los documentos originales, a menudo se encuentra una desagradable sorpresa: las extensas y complejas formulaciones que se desarrollan, por lo general, acaban en fórmulas con errores que casi nunca son corregibles porque casualmente se han omitido algunas hipótesis intermedias sin cuya consideración es imposible llegar al resultado final…</p>
 <p>Alguien dirá: —bueno, eso puede ocurrir, es accidental—. Pues sí, y no le faltaría razón si no fuera porque no ocurre rara vez, sino prácticamente siempre. Y lo curioso es que esto que ya me encontré hace más de 25 años, sigue pasando a día de hoy. Es como un extraño y curioso distintivo de calidad, como cuando el escritor Eugenio d’Ors le preguntaba a su correctora si había entendido su escrito, y si decía que “sí”, le mandaba tirarlo a la papelera. Así que la frustración cuando estudiabas estos temas por tu cuenta era enorme: después de seguir largos y complejos desarrollos físico-matemáticos, intuir hipótesis simplificadoras para la resolución de algunas ecuaciones imposibles de resolver sin ellas (aunque los ordenadores ya ayudaban, no era como actualmente) y trabajar en la solución final, cuando la ponías en práctica o la representabas gráficamente te llevabas la gran decepción: aquello no casaba con ningún caso real que tuvieras contrastado, ni mucho menos con lo deducido en la tesis de referencia.</p>
-<p>Es conocido el caso comentado años después por Melis Maynar sobre la curva característica de la Dra. Mary Duncan Fama, cuya rama plástica presentaba un <em>gap</em> respecto a la elástica precisamente en el punto de unión, el correspondiente a la presión crítica de la cavidad, y que él lo achacaba generosamente a no haber entendido cómo lo calculaba ella. Este es sólo uno de los múltiples casos —ya digo, raro es que todo sea correcto en una tesis que se precie—.</p>
+<p>Es conocido el caso comentado años después por Melis Maynar sobre la curva característica de la Dra. Mary Duncan Fama, cuya rama plástica presentaba un <em>gap</em> respecto a la elástica precisamente en el punto de unión, el correspondiente a la presión crítica de la cavidad, y que él lo achacaba generosamente a no haber entendido cómo lo calculaba ella. Este es sólo uno de los múltiples casos —ya digo, raro es que todo sea correcto en una tesis que se precie—…</p>
 <section id="las-curvas-características-y-el-punto-de-partida" class="level2">
 <h2 data-anchor-id="las-curvas-características-y-el-punto-de-partida">Las curvas características y el punto de partida</h2>
 <p>Y hablando de curvas características, y dejando el resto para mejor ocasión, desarrollé hace ya muchos años una hoja de cálculo para la graficación de las <strong>Curvas Características GRC</strong> (<em>ground reaction curve</em>) de una excavación en túnel y la obtención de sus parámetros fundamentales, así como las correspondientes al sostenimiento en función del pase de avance de la excavación, basado en las curvas <strong>LDP</strong> (<em>longitudinal displacement profile</em>) inicialmente de Panet (1996) y Chern (1998); años después pude incorporar las de Vlachopoulos &amp; Diederichs (2009).</p>
@@ -280,11 +280,13 @@ window.Quarto = {
 <section id="un-ejemplo-contrastado-caso-práctico-del-máster-muiecm" class="level2">
 <h2 data-anchor-id="un-ejemplo-contrastado-caso-práctico-del-máster-muiecm">Un ejemplo contrastado: caso práctico del Máster MUIECM</h2>
 <p>Vamos a ver un ejemplo de lo que ofrece la web-app que mi sobrino ha recuperado y <em>tuneado</em>, según él. Y para eso nos basaremos en un ejemplo del Máster MUIECM — RS2 — Caso Práctico (GeotecniaICCP, ETSI Canales, Caminos y Puertos), de forma que podamos comparar resultados; para no abrumar tomaremos sólo una de las 4 curvas del método convergencia-confinamiento, en este caso la solución de Carranza-Torres (2004) del modelo de terreno tipo Hoek-Brown para rocas, basado en el índice GSI (<em>Geological Strength Index</em>).</p>
-<p>En el ejemplo se usa una sección de túnel ferroviario de Alta Velocidad de aproximadamente 15 metros de ancho, que se excavará en avance y destroza; se deduce un radio equivalente a la sección de avance de 4,3 m. El resto de parámetros del terreno pueden introducirse con mucha facilidad, contando con las ayudas típicas para parametrización usual.</p>
-<div class="fig-note">
-<p><i>Figura —</i> parámetros del terreno introducidos en la web-app (GSI, resistencia, dilatancia…).</p>
+<p>En el ejemplo se usa una sección de túnel ferroviario de Alta Velocidad de aproximadamente 15 metros de ancho:</p>
+<p><img src="img/tuneles/01.png" class="fig img-fluid"></p>
+<p>que se excavará en avance y destroza; se deduce un radio equivalente a la sección de avance de 4,3 m. El resto de parámetros del terreno pueden introducirse con mucha facilidad, contando con las ayudas típicas para parametrización usual.</p>
+<p><img src="img/tuneles/02.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Parámetros del terreno y del túnel.
 </div>
-<p><img src="img/tuneles/image1.png" class="fig img-fluid"> <img src="img/tuneles/image2.png" class="fig img-fluid"> <img src="img/tuneles/image3.png" class="fig img-fluid"> <img src="img/tuneles/image4.png" class="fig img-fluid"> <img src="img/tuneles/image5.png" class="fig img-fluid"></p>
 <p>Introduciendo estos parámetros enseguida obtenemos la GRC elegida, donde además, el desplazamiento del ratón nos va dando valores de las curvas <em>en vivo</em>; cosas admirables de las nuevas tecnologías. Vemos además que disponemos de ejes dobles en X y triple en Y:</p>
 <ul>
 <li><strong>eje X:</strong> desplazamiento radial Ur (mm) vs Convergencia del túnel (%)</li>
@@ -295,11 +297,16 @@ window.Quarto = {
 <ul>
 <li>para <strong>Chern (1998)</strong>, RS.v3 nos da <strong>10,01 mm / 0,23 %</strong>, siendo la de RockSupport (RS.v3) de <strong>9,97 mm / 0,23 %</strong>.</li>
 </ul>
-<div class="fig-note">
-<p><i>Figura —</i> GRC calculada con la solución de Carranza-Torres y LDP seleccionada.</p>
+<p><img src="img/tuneles/03.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+GRC.
 </div>
-<p><img src="img/tuneles/image6.png" class="fig img-fluid"> <img src="img/tuneles/image7.png" class="fig img-fluid"> <img src="img/tuneles/image8.png" class="fig img-fluid"> <img src="img/tuneles/image9.png" class="fig img-fluid"> <img src="img/tuneles/image10.png" class="fig img-fluid"> <img src="img/tuneles/image11.png" class="fig img-fluid"></p>
-<p>Y accedemos ya a los primeros parámetros fundamentales antes de colocar sostenimiento:</p>
+<p>También accedemos ya a los primeros parámetros fundamentales antes de colocar sostenimiento:</p>
+<p><img src="img/tuneles/04.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Parámetros iniciales, antes de sostenimiento.
+</div>
+<p>Podemos ver:</p>
 <ul>
 <li><strong>Presión de campo Po:</strong> 3,51 MPa / <strong>Presión Crítica Pcr:</strong> 1,47 MPa.</li>
 <li><strong>Máxima deformación radial sin sostenimiento:</strong> 32,52 mm (32,38 mm en RS.v3).</li>
@@ -311,30 +318,50 @@ window.Quarto = {
 <h2 data-anchor-id="el-efecto-frente-la-pieza-que-faltaba">El efecto frente: la pieza que faltaba</h2>
 <p>Si nos planteamos la modelización en software de elementos finitos (RS2, Plaxis, Flac, etc.), es usual plantear varias fases de excavación que permitan primero simular el estado tensional del terreno antes de excavar (estado inicial) y posteriormente una fase que representa un pase de avance de la excavación y la relajación que se produce en el terreno circundante del túnel, justo antes de colocar el sostenimiento. Esto suele simularse mediante lo que se conoce como <strong>“Efecto Frente”</strong>, y se resuelve con la colocación de una presión interior equivalente en el túnel, cuyo valor debemos calcular previamente. Normalmente requiere salir del entorno del software y tratar el tema aparte para, una vez obtenido su resultado, volver al software y representarlo.</p>
 <p>Toda esta incomodidad ha sido resuelta directamente en la web-app, en un apartado dedicado al efecto frente, y que permite obtenerlo todo de manera automática introduciendo el pase de avance y la LDP elegida. Por ejemplo, para Vlachopoulos vemos que la curva naranja seleccionada se corresponde a la de ratio Rp/R ~ 2 (la app representa la exacta, de valor Rp/R = 1,98); podemos, además, graficar el punto, y obtendremos el factor de carga (1−λ) a introducir en el software FEM como presión interior: <strong>0,149 ~ 0,15</strong> (en el caso del Máster MUIECM — RS2 obtenían 0,14 con interpolaciones cuasi-visuales más groseras, teniendo que acudir a exportar datos a un Excel aparte).</p>
+<p><img src="img/tuneles/05.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Cálculo directo del Efecto Frente.
+</div>
 </section>
 <section id="interpretación-estabilidad-y-diseño-del-sostenimiento" class="level2">
 <h2 data-anchor-id="interpretación-estabilidad-y-diseño-del-sostenimiento">Interpretación, estabilidad y diseño del sostenimiento</h2>
 <p>Aparte de esta fantástica herramienta integrada, la web-app nos proporciona ya una serie de instrumentos de interpretación y presentación de resultados:</p>
 <ul>
-<li>los parámetros derivados de <strong>Hoek-Brown</strong> y la <strong>linealización de las envolventes de fallo</strong> en σ₁ vs σ₃ y en τ vs σₙ;</li>
-<li>los <strong>indicadores de estabilidad del macizo</strong> rocoso;</li>
-<li>y una <strong>Recomendación del Sostenimiento tipo</strong> a aplicar en función de la estimación del RMR de la roca, basada en la tabla clásica empleada con gran profusión (citada y documentada por diversos autores), dando además una imagen visual de dicha recomendación, lo que facilita su interpretación, y que puede ser descargada en formato CAD.</li>
+<li>los parámetros derivados de <strong>Hoek-Brown</strong> y la <strong>linealización de las envolventes de fallo</strong> en σ₁ vs σ₃ y en τ vs σₙ:</li>
 </ul>
-<div class="fig-note">
-<p><i>Figura —</i> envolventes de fallo, indicadores de estabilidad y recomendación de sostenimiento según RMR.</p>
-</div>
-<p><img src="img/tuneles/image12.png" class="fig img-fluid"> <img src="img/tuneles/image13.png" class="fig img-fluid"> <img src="img/tuneles/image14.png" class="fig img-fluid"> <img src="img/tuneles/image15.png" class="fig img-fluid"> <img src="img/tuneles/image16.png" class="fig img-fluid"> <img src="img/tuneles/image17.png" class="fig img-fluid"> <img src="img/tuneles/image18.png" class="fig img-fluid"></p>
-<p>Entonces podemos empezar a diseñar el sostenimiento basándonos en la recomendación: tenemos disponibles las mismas opciones que RockSupport, dando valores perfectamente asimilables con este software; pero además, nos permite obtener y estudiar (incluso variando los parámetros para analizar su sensibilidad):</p>
+<p><img src="img/tuneles/06.png" class="fig img-fluid"></p>
 <ul>
-<li>la <strong>distribución de tensiones</strong> en el macizo y el campo tensional en la punta de los bulones;</li>
-<li>el <strong>análisis de rotura</strong> (círculo de Mohr) y esfuerzo desviador;</li>
-<li>un análisis gráfico de la <strong>longitud de los bulones</strong> necesaria para obtener un factor de seguridad local <strong>FoS &gt; 1,3–1,5</strong>.</li>
+<li>los <strong>indicadores de estabilidad del macizo</strong> rocoso:</li>
 </ul>
-<p>La solución final también se representa en una sección adecuada para ver su grado de coincidencia con la recomendada y, desde luego, para justificar ajustes sobre la misma de forma técnica y precisa…, todo lo preciso que se puede ser en este campo (*).</p>
-<div class="fig-note">
-<p><i>Figura —</i> diseño del sostenimiento (bulones, cerchas, gunita) y comparación con la recomendación según RMR.</p>
+<p><img src="img/tuneles/07.png" class="fig img-fluid"></p>
+<ul>
+<li>y una <strong>Recomendación del Sostenimiento tipo</strong> a aplicar en función de la estimación del RMR de la roca, basada en la tabla clásica empleada con gran profusión (citada y documentada por diversos autores):</li>
+</ul>
+<p><img src="img/tuneles/08.png" class="fig img-fluid"></p>
+<p>dando además una imagen visual de dicha recomendación, lo que facilita su interpretación, y que puede ser descargada en formato CAD:</p>
+<p><img src="img/tuneles/09.png" class="fig img-fluid"></p>
+<p>Entonces podemos empezar a diseñar el sostenimiento basándonos en la recomendación: tenemos disponibles las mismas opciones que RockSupport, dando valores perfectamente asimilables con este software:</p>
+<p><img src="img/tuneles/10.png" class="fig img-fluid"></p>
+<p><img src="img/tuneles/11.png" class="fig img-fluid"></p>
+<p><img src="img/tuneles/12.png" class="fig img-fluid"></p>
+<div class="fig-cap">
+Diferentes sostenimientos en distintos momentos.
 </div>
-<p><img src="img/tuneles/image19.png" class="fig img-fluid"> <img src="img/tuneles/image20.png" class="fig img-fluid"> <img src="img/tuneles/image21.png" class="fig img-fluid"> <img src="img/tuneles/image22.png" class="fig img-fluid"> <img src="img/tuneles/image23.png" class="fig img-fluid"> <img src="img/tuneles/image24.png" class="fig img-fluid"> <img src="img/tuneles/image25.png" class="fig img-fluid"> <img src="img/tuneles/image26.png" class="fig img-fluid"> <img src="img/tuneles/image27.png" class="fig img-fluid"></p>
+<p>pero además, nos permite obtener y estudiar (incluso variando los parámetros para analizar su sensibilidad):</p>
+<ul>
+<li>la <strong>distribución de tensiones</strong> en el macizo y el campo tensional en la punta de los bulones:</li>
+</ul>
+<p><img src="img/tuneles/13.png" class="fig img-fluid"></p>
+<ul>
+<li>el <strong>análisis de rotura</strong> (círculo de Mohr) y esfuerzo desviador:</li>
+</ul>
+<p><img src="img/tuneles/14.png" class="fig img-fluid"></p>
+<ul>
+<li>un análisis gráfico de la <strong>longitud de los bulones</strong> necesaria para obtener un factor de seguridad local <strong>FoS &gt; 1,3–1,5</strong>:</li>
+</ul>
+<p><img src="img/tuneles/15.png" class="fig img-fluid"></p>
+<p>La solución final también se representa en una sección adecuada para ver su grado de coincidencia con la recomendada y, desde luego, para justificar ajustes sobre la misma de forma técnica y precisa…, todo lo preciso que se puede ser en este campo (*).</p>
+<p><img src="img/tuneles/16.png" class="fig img-fluid"></p>
 <hr>
 <p>(*) Recordemos las muchas advertencias de los grandes teóricos sobre las cautelas que hay que tener al dar validez a los cálculos desarrollados, por la gran dispersión que presentan las diferentes formulaciones para una misma solución…</p>
 <p>Espero que os haya gustado, y que inspire a mi sobrino en sus futuras tesis, ¿por qué no?</p>
@@ -348,7 +375,7 @@ window.Quarto = {
 <div class="g-col-1" data-index="0" data-listing-file-modified-sort="1786715349038" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
 <a href="../posts/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img loading='lazy' src="img\oleaje\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="img\tuneles\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Artículos
