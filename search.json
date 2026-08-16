@@ -564,7 +564,7 @@
     "href": "index.html#aplicaciones-hidrología",
     "title": "Adolfo Diz — Ingeniería e IA Local",
     "section": "Aplicaciones · hidrología",
-    "text": "Aplicaciones · hidrología\n\n\n App-HidroMaps La nueva, antes WhiteToolbox: del punto de interés al caudal máximo en dos clics, con mapas OSM + Esri sin depender de Google. Flask · demo próximamente\n\n\n App-CAUMAX El ciclo completo del plugin de QGIS rediseñado: regiones hidrológicas, cuantiles de lluvia y caudal, variables intermedias y descarga de capas GIS. Dash · demo en vivo (v1)\n\n\n App-Hidrología-IDF Curvas IDF locales por krigeado, hietogramas por bloques alternos, hidrogramas y tránsito de Muskingum con más de 1.400 simulaciones. Streamlit · demo en vivo"
+    "text": "Aplicaciones · hidrología\n\n\n App-HidroMaps La nueva, antes WhiteToolbox: del punto de interés al caudal máximo en dos clics, con mapas OSM + Esri sin depender de Google. Flask · demo próximamente\n\n\n App-CAUMAX El ciclo completo del plugin de QGIS rediseñado: regiones hidrológicas, cuantiles de lluvia y caudal, variables intermedias y descarga de capas GIS. Dash · demo en vivo (v1)\n\n\n App-Hidrología-IDF Curvas IDF locales por krigeado, hietogramas por bloques alternos, hidrogramas y tránsito de Muskingum con más de 1.400 simulaciones. Streamlit · demo en vivo\n\n\n App-Análisis del Oleaje De la ecuación de dispersión a los ábacos de Wiegel: shoaling, rotura y difracción del oleaje, con los ábacos superpuestos a escala real sobre el mapa del puerto. Streamlit · demo en vivo"
   },
   {
     "objectID": "index.html#cursos-y-vídeos",
