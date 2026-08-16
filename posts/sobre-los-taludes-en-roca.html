@@ -140,15 +140,15 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Sobre los taludes en roca: estereogramas interpretativos – Adolfo Diz — Ingeniería e IA Local">
 <meta property="og:description" content="Generación de estereogramas para fallas plana, en cuña, volcamiento y vuelco por flexión, con autodetección de familias de juntas y coeficientes de seguridad.">
-<meta property="og:image" content="https://adolfodiz.github.io/logo/logo_AD_eng_rojo.png">
+<meta property="og:image" content="https://adolfodiz.github.io/posts/img/taludes/00.png">
 <meta property="og:site_name" content="Adolfo Diz — Ingeniería e IA Local">
-<meta property="og:image:height" content="2953">
-<meta property="og:image:width" content="945">
+<meta property="og:image:height" content="429">
+<meta property="og:image:width" content="762">
 <meta name="twitter:title" content="Sobre los taludes en roca: estereogramas interpretativos – Adolfo Diz — Ingeniería e IA Local">
 <meta name="twitter:description" content="Generación de estereogramas para fallas plana, en cuña, volcamiento y vuelco por flexión, con autodetección de familias de juntas y coeficientes de seguridad.">
-<meta name="twitter:image" content="https://adolfodiz.github.io/logo/logo_AD_eng_rojo.png">
-<meta name="twitter:image-height" content="2953">
-<meta name="twitter:image-width" content="945">
+<meta name="twitter:image" content="https://adolfodiz.github.io/posts/img/taludes/00.png">
+<meta name="twitter:image-height" content="429">
+<meta name="twitter:image-width" content="762">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://adolfodiz.github.io/posts/sobre-los-taludes-en-roca.html">
 </head>
@@ -258,62 +258,61 @@ window.Quarto = {
 <p><span class="ah-cat">Obras lineales · Geotecnia</span> <span class="ah-date">14 de diciembre de 2025 · migrado desde LinkedIn</span></p>
 </div>
 </div>
-<p>Para esta web-app relacionada con la geología estructural, mi sobrino ha tenido que esforzarse en un campo que le era más ajeno, de ahí el valor de su comprensión… He visto ingenieros haciendo túneles que no dominaban estos temas, confiados en que cualquier problema que surgiera ya lo subcontratarían a empresas especializadas del ámbito. Yo creo que si haces un túnel debes conocer todo esto, aunque no seas un especialista debes conocer todos estos rudimentos, porque te ayudarán a anticiparte, no a poner soluciones cuando el desastre haya sobrevenido… Son muchas las cosas que pueden fallar y, aunque normalmente se tiene apoyo central de los especialistas, el lenguaje debería ser conocido por todos y, además, el día a día puede traer problemas particulares que no forman parte del planteamiento global del proyecto; p.e. una masa rocosa cinemáticamente inestable en una ladera estable sobre el emboquille del túnel, etc.</p>
-<p>Esta web-app se adentra en la generación de estereogramas interpretativos para la localización de posibles fallas de diferentes tipos: plana, cuña, volcamiento y vuelco por flexión, repartidas en 4 pestañas diferentes una vez se ha realizado la clasificación previa de todas las juntas introducidas o cargadas desde formato ‘csv’. En esencia imita al DIPS de Rockscience, pero además, genera tablas con los coeficientes de seguridad, lo que sería un postproceso del Dips, similar a las que se generarían con la antigua excel de César Sagaseta de la Universidad de Cantabria.</p>
-<p>Si ponemos unos ejemplos de estudio, por ejemplo, de casos reales proyectados de refuerzos de taludes o del emboquille de un túnel, podremos ver una salida gráfica y su poterior tratamiento:</p>
-<p><img src="img/taludes/image1.png" class="img-fluid"></p>
-<p><img src="img/taludes/image2.png" class="img-fluid"></p>
+<p>Para esta web-app relacionada con la <strong>geología estructural</strong>, mi sobrino ha tenido que esforzarse en un campo que le era más ajeno, de ahí el valor de su comprensión… He visto ingenieros haciendo túneles que no dominaban estos temas, confiados en que cualquier problema que surgiera ya lo subcontratarían a empresas especializadas del ámbito. Yo creo que si haces un túnel debes conocer todo esto, al menos debes conocer los rudimentos, porque te ayudarán a anticiparte a los problemas, no a poner soluciones cuando el desastre ya haya sobrevenido… Son muchas las cosas que pueden fallar y, aunque normalmente el jefe de obra tiene apoyo central de los especialistas, el lenguaje debería ser conocido por todos y, además, el día a día puede traer problemas particulares que no forman parte del planteamiento global del proyecto; p.&nbsp;ej., una masa rocosa cinemáticamente inestable en una ladera estable sobre el emboquille del túnel, etc.</p>
+<p>Esta web-app se adentra en la generación de <strong>estereogramas interpretativos</strong> para la localización de posibles fallas de diferentes tipos: plana, cuña, volcamiento y vuelco por flexión, repartidas en 4 pestañas diferentes una vez se ha realizado la clasificación previa de todas las juntas introducidas o cargadas desde formato ‘csv’. En esencia imita al <strong>DIPS</strong> de Rockscience, pero además, genera tablas con los coeficientes de seguridad, lo que sería un postproceso del Dips, similar a las que se generarían con la antigua excel de César Sagaseta de la Universidad de Cantabria.</p>
+<p>Si ponemos unos ejemplos de estudio, por ejemplo, de casos reales proyectados de refuerzos de taludes o del emboquille de un túnel, podremos ver una salida gráfica y su posterior tratamiento:</p>
+<p><img src="img/taludes/01.png" class="fig img-fluid"></p>
+<p><img src="img/taludes/02.png" class="fig img-fluid"></p>
 <p>Un caso de uso de la excel nombrada y muy usada en proyectos sería del tipo mostrado:</p>
-<p><img src="img/taludes/image3.png" class="img-fluid"></p>
+<p><img src="img/taludes/03.png" class="fig img-fluid"></p>
 <p>Pero si nos adentramos en cada pestaña, podremos ver las implicaciones de su tratamiento:</p>
 <section id="clasificación-de-juntas" class="level2">
-<h2 data-anchor-id="clasificación-de-juntas">CLASIFICACIÓN DE JUNTAS:</h2>
-<p>El primer problema fundamental del código era generar estereogramas de forma automática y bien orientados: basados en los ángulos que se utilizan en geología estructural (dip, dip-direction, plunge, …) -no entraremos en explicar su significado, de sobra conocido en la geotecnia de rocas-, y conseguir que los datos no se deformen por la anamorfosis implícita del propio sistema de representación, según el meridiano donde se ubiquen. Hay que pensar que es un proyección esférica y, como tal, sometida a grandes deformaciones conforme te alejas del ecuador…</p>
-<p><img src="img/taludes/image4.png" class="img-fluid"></p>
+<h2 data-anchor-id="clasificación-de-juntas">Clasificación de Juntas</h2>
+<p>El primer problema fundamental del código era generar estereogramas de forma automática y bien orientados: basados en los ángulos que se utilizan en geología estructural (dip, dip-direction, plunge, …) —no entraremos en explicar su significado, de sobra conocido en la geotecnia de rocas—, y conseguir que los datos no se deformen por la anamorfosis implícita del propio sistema de representación, según el meridiano donde se ubiquen. Hay que pensar que es una proyección esférica y, como tal, sometida a grandes deformaciones conforme te alejas del ecuador…</p>
+<p><img src="img/taludes/04.png" class="fig img-fluid"></p>
 <p>Posteriormente debes resolver los sistemas de clasificación de polos en grupos: en Dips todo ese tratamiento pasa por una primera fase manual, donde el usuario define ventanas de selección para las diferentes familias, pero aquí se ha intentado automatizar, o sea, que se autodetecten esas familias y solo requiera una mínima y opcional intervención del usuario en caso de querer ajustarlas.</p>
-<p><img src="img/taludes/image5.png" class="img-fluid"><img src="img/taludes/image6.png" class="img-fluid"></p>
+<p><img src="img/taludes/05.png" class="fig img-fluid"></p>
 </section>
 <section id="falla-por-rotura-plana-planar-sliding" class="level2">
-<h2 data-anchor-id="falla-por-rotura-plana-planar-sliding">FALLA POR ROTURA PLANA (PLANAR SLIDING):</h2>
-<p>Aquí el problema fundamental del código era conseguir modelizar el llamado ‘daylight envelope’* (envolvente de afloramiento), de muy difícil obtención matemática en la proyección del estereograma. En la app se mostrarán como curvas de fondo grises para los diferentes grados y la curva del modelo real en color destacado, autodetectándose todo el conjunto de polos que cae en su interior.</p>
-<p><img src="img/taludes/image7.png" class="img-fluid"></p>
-<p><img src="img/taludes/image8.png" class="img-fluid"></p>
+<h2 data-anchor-id="falla-por-rotura-plana-planar-sliding">Falla por Rotura Plana (Planar Sliding)</h2>
+<p>Aquí el problema fundamental del código era conseguir modelizar el llamado <em>‘daylight envelope’</em> (envolvente de afloramiento), de muy difícil obtención matemática en la proyección del estereograma. En la app se mostrarán como curvas de fondo grises para los diferentes grados y la curva del modelo real en color destacado, autodetectándose todo el conjunto de polos que cae en su interior.</p>
+<p><img src="img/taludes/06.png" class="fig img-fluid"></p>
 <blockquote class="blockquote">
-<p>* Representa el lugar geométrico de todos los planos que superan el angulo de rozamiento interno.</p>
+<p>* Se define en una proyección estereográfica como la zona o lugar geométrico que representa las orientaciones de los planos de discontinuidad que son <strong>cinemáticamente libres para deslizar</strong>.</p>
 </blockquote>
-<p>se define en una proyección estereográfica como la zona o l.g. que representa las orientaciones de los planos de discontinuidad que son&nbsp;<strong>cinemáticamente libres para deslizar</strong>.</p>
-<p>Se refiere a la condición geométrica en la que un plano de debilidad (falla, diaclasa, estratificación)&nbsp;aflora&nbsp;en la cara del talud.</p>
+<p>Se refiere a la condición geométrica en la que un plano de debilidad (falla, diaclasa, estratificación) <em>aflora</em> en la cara del talud:</p>
 <ul>
-<li><p>Si el buzamiento del plano es&nbsp;<strong>mayor</strong>&nbsp;que el del talud, el plano se entierra (“buried”) y el bloque de roca no tiene salida física; está bloqueado.</p></li>
-<li><p>Si el buzamiento del plano es&nbsp;<strong>menor</strong>&nbsp;que el del talud (en la misma dirección), el plano “ve la luz” (daylights) en la cara del talud, permitiendo que la gravedad pueda potencialmente deslizar el bloque hacia abajo.</p></li>
+<li>Si el buzamiento del plano es <strong>mayor</strong> que el del talud, el plano se entierra (“buried”) y el bloque de roca no tiene salida física; está bloqueado.</li>
+<li>Si el buzamiento del plano es <strong>menor</strong> que el del talud (en la misma dirección), el plano “ve la luz” (daylights) en la cara del talud, permitiendo que la gravedad pueda potencialmente deslizar el bloque hacia abajo.</li>
 </ul>
-<p>El Daylight Envelope es el lugar geométrico en la falsilla estereográfica que delimita todos los planos cuyos polos cumplen la condición de que su&nbsp;<strong>buzamiento es menor que el buzamiento de la cara del talud</strong>&nbsp;(considerando el buzamiento aparente en la dirección del movimiento).</p>
+<p>El Daylight Envelope es el lugar geométrico en la falsilla estereográfica que delimita todos los planos cuyos polos cumplen la condición de que su <strong>buzamiento es menor que el buzamiento de la cara del talud</strong> (considerando el buzamiento aparente en la dirección del movimiento).</p>
+<p><strong>La Zona del Envelope:</strong></p>
 <ul>
-<li><p><strong>La Zona del Envelope:</strong></p></li>
-<li><p>Cualquier polo de una discontinuidad que caiga&nbsp;<strong>dentro</strong>&nbsp;del área cóncava de este círculo máximo representa un plano que tiene un buzamiento&nbsp;<em>menor</em>&nbsp;que el talud.</p></li>
-<li><p>Por lo tanto, todos los polos que caen en esa zona representan planos que&nbsp;<strong>afloran</strong>&nbsp;en el talud.</p></li>
+<li>Cualquier polo de una discontinuidad que caiga <strong>dentro</strong> del área cóncava de este círculo máximo representa un plano que tiene un buzamiento <em>menor</em> que el talud.</li>
+<li>Por lo tanto, todos los polos que caen en esa zona representan planos que <strong>afloran</strong> en el talud.</li>
 </ul>
-<p>Además, se destaca la dirección del posible deslizamiento en caso de producirse; deben estudiarse para ello los coeficientes de seguridad asociados y la posibilidad de aparición de agua en las juntas; debe tenerse en cuenta que los FoS de la tabla no consideran la presnecia de agua ni la cohesión del material, si existiera.</p>
+<p>En la web-app, además, se destaca la dirección del posible deslizamiento en caso de producirse (deducir la geometría del bloque que desliza es fácil en el propio estereo); deben estudiarse para ello los coeficientes de seguridad asociados y la posibilidad de aparición de agua en las juntas; debe tenerse en cuenta que los FoS de la tabla no consideran la presencia de agua ni la cohesión del material, si existiera.</p>
 <p>Se puede optar por dos representaciones similares y que autodetectan los polos que caen dentro de las zonas críticas:</p>
-<p><img src="img/taludes/image9.png" class="img-fluid"> <img src="img/taludes/image10.png" class="img-fluid"></p>
+<p><img src="img/taludes/07.png" class="fig img-fluid"></p>
 </section>
 <section id="falla-por-cuña-wedge-sliding" class="level2">
-<h2 data-anchor-id="falla-por-cuña-wedge-sliding">FALLA POR CUÑA (WEDGE SLIDING):</h2>
-<p><em>SE PRODUCE CUANDO HAY DOS FAMILIAS O SETS QUE PUEDEN AFLORAR AL TALUD, INDUCIENDO SENDAS ROTURAS PLANAS LA FORMACIÓN DE UNA SOLA CUÑA A DESLIZAR POR LA INTERSECCIÓN DE AMBOS PLANOS. Pueden aparecer cuñas directas y/o inversas.</em></p>
-<p><img src="img/taludes/image11.png" class="img-fluid"><img src="img/taludes/image12.png" class="img-fluid"><img src="img/taludes/image13.png" class="img-fluid"><img src="img/taludes/image14.png" class="img-fluid"></p>
-<p>Se autodetectan todas las inetrsecciones de las familias principales y las que caen dentro de la zona de peligro.</p>
-<p><img src="img/taludes/image15.png" class="img-fluid"></p>
+<h2 data-anchor-id="falla-por-cuña-wedge-sliding">Falla por Cuña (Wedge Sliding)</h2>
+<p>Se produce cuando hay dos familias o sets que pueden aflorar al talud, induciendo sendas roturas planas y la formación de una sola cuña a deslizar por la intersección de ambos planos. Pueden aparecer cuñas directas y/o inversas.</p>
+<p><img src="img/taludes/08.png" class="fig img-fluid"></p>
+<p><img src="img/taludes/09.png" class="fig img-fluid"></p>
+<p><img src="img/taludes/10.png" class="fig img-fluid"></p>
+<p>Se autodetectan todas las intersecciones de las familias principales y las que caen dentro de la zona de peligro.</p>
+<p><img src="img/taludes/11.png" class="fig img-fluid"></p>
 </section>
 <section id="vuelco-por-flexión-flexural-toppling" class="level2">
-<h2 data-anchor-id="vuelco-por-flexión-flexural-toppling">VUELCO POR FLEXIÓN (FLEXURAL TOPPLING):</h2>
-<p>Igualmente se autodetectan todas las inetrsecciones de las familias principales y las que caen dentro de la zona de peligro.</p>
-<p><img src="img/taludes/image16.png" class="img-fluid"><img src="img/taludes/image17.png" class="img-fluid"></p>
+<h2 data-anchor-id="vuelco-por-flexión-flexural-toppling">Vuelco por Flexión (Flexural Toppling)</h2>
+<p>Igualmente se autodetectan todas las intersecciones de las familias principales y las que caen dentro de la zona de peligro.</p>
+<p><img src="img/taludes/12.png" class="fig img-fluid"></p>
 </section>
 <section id="falla-por-volcamiento" class="level2">
-<h2 data-anchor-id="falla-por-volcamiento">FALLA POR VOLCAMIENTO:</h2>
-<p>Igualmente se autodetectan todas las inetrsecciones de las familias principales y las que caen dentro de la zona de peligro.</p>
-<p><img src="img/taludes/image18.png" class="img-fluid"></p>
-<p><img src="img/taludes/image19.png" class="img-fluid"><img src="img/taludes/image20.png" class="img-fluid"><img src="img/taludes/image21.png" class="img-fluid"></p>
+<h2 data-anchor-id="falla-por-volcamiento">Falla por Volcamiento</h2>
+<p>Igualmente se autodetectan todas las intersecciones de las familias principales y las que caen dentro de la zona de peligro.</p>
+<p><img src="img/taludes/13.png" class="fig img-fluid"></p>
 
 
 
@@ -324,7 +323,7 @@ window.Quarto = {
 <div class="g-col-1" data-index="0" data-listing-file-modified-sort="1786715349038" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
 <a href="../posts/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img loading='lazy' src="img\tuneles\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="img\taludes\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Artículos
