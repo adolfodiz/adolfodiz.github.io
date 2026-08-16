@@ -140,15 +140,15 @@ window.Quarto = {
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Continuando con la hidrología: curvas IDF, hietogramas y tránsito por el cauce – Adolfo Diz — Ingeniería e IA Local">
 <meta property="og:description" content="Una web-app que genera curvas IDF locales por krigeado, hietogramas por bloques alternos y una primera aproximación a los parámetros de Muskingum con más de 1.400 tránsitos.">
-<meta property="og:image" content="https://adolfodiz.github.io/logo/logo_AD_eng_azul.png">
+<meta property="og:image" content="https://adolfodiz.github.io/posts/img/idf/00.png">
 <meta property="og:site_name" content="Adolfo Diz — Ingeniería e IA Local">
-<meta property="og:image:height" content="2953">
-<meta property="og:image:width" content="945">
+<meta property="og:image:height" content="520">
+<meta property="og:image:width" content="925">
 <meta name="twitter:title" content="Continuando con la hidrología: curvas IDF, hietogramas y tránsito por el cauce – Adolfo Diz — Ingeniería e IA Local">
 <meta name="twitter:description" content="Una web-app que genera curvas IDF locales por krigeado, hietogramas por bloques alternos y una primera aproximación a los parámetros de Muskingum con más de 1.400 tránsitos.">
-<meta name="twitter:image" content="https://adolfodiz.github.io/logo/logo_AD_eng_azul.png">
-<meta name="twitter:image-height" content="2953">
-<meta name="twitter:image-width" content="945">
+<meta name="twitter:image" content="https://adolfodiz.github.io/posts/img/idf/00.png">
+<meta name="twitter:image-height" content="520">
+<meta name="twitter:image-width" content="925">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://adolfodiz.github.io/posts/continuando-con-la-hidrologia.html">
 </head>
@@ -258,61 +258,62 @@ window.Quarto = {
 <p><span class="ah-cat">Ingeniería del agua · Hidrología</span> <span class="ah-date">16 de noviembre de 2025 · migrado desde LinkedIn</span></p>
 </div>
 </div>
+<p><img src="img/idf/01.png" class="fig img-fluid"></p>
 <p>En la misma línea del artículo anterior, otra web-app se encarga de realizar los procesos adecuados para obtener las <strong>curvas IDF</strong> asociadas a la zona definida por el punto introducido en el mapa, en este caso introduciendo además los parámetros siguientes:</p>
 <p>Para la modelación de las IDF locales se realizan <strong>krigeados</strong> del reparto en el mapa de España de las variables asociadas: <strong>n media</strong>, que es el exponente local geográfico, e <strong>I(to,po)</strong>, parámetro de intensidad local, según se verá en la explicación teórica que acompaña la web.</p>
+<p><img src="img/idf/02.png" class="fig img-fluid"></p>
+<p><img src="img/idf/03.png" class="fig img-fluid"></p>
+<p><img src="img/idf/04.png" class="fig img-fluid"></p>
+<p><img src="img/idf/05.png" class="fig img-fluid"></p>
+<p><img src="img/idf/06.png" class="fig img-fluid"></p>
+<p><img src="img/idf/07.png" class="fig img-fluid"></p>
+<p><img src="img/idf/08.png" class="fig img-fluid"></p>
 <p>Generando las curvas IDF locales asociadas a los diferentes periodos de retorno (basadas en el método expuesto):</p>
-<div class="fig-note">
-<p><i>Figura —</i> curvas IDF locales generadas para los diferentes periodos de retorno.</p>
-</div>
+<p><img src="img/idf/09.png" class="fig img-fluid"></p>
 <p>A continuación se calculan y presentan los <strong>resultados intermedios del método de la norma 5.2-IC</strong> para el mismo ámbito local y los parámetros introducidos por el usuario:</p>
-<div class="fig-note">
-<p><i>Figura —</i> resultados intermedios del método de la norma 5.2-IC.</p>
-</div>
+<p><img src="img/idf/10.png" class="fig img-fluid"></p>
 <p>Y seguidamente se muestra una comparativa de las curvas IDF obtenidas para el <strong>método local propuesto, el antiguo de la norma y el de la norma reciente</strong> para una lluvia “unitaria” de 100 mm, dando los patrones acumulados de cada metodología e incluyendo el <strong>NOAA tipo II</strong> (National Oceanic and Atmospheric Administration) como referencia para modelaciones en HEC-HMS y similares:</p>
-<div class="fig-note">
-<p><i>Figura —</i> comparativa de patrones acumulados: método local, normas (antigua y reciente) y NOAA tipo II.</p>
-</div>
+<p><img src="img/idf/11.png" class="fig img-fluid"></p>
 <p>Seguidamente se pasa ya a presentar los <strong>hietogramas</strong> para el periodo de retorno seleccionado por el usuario para las 3 metodologías expuestas:</p>
-<div class="fig-note">
-<p><i>Figura —</i> hietogramas de las 3 metodologías para el periodo de retorno seleccionado.</p>
-</div>
+<p><img src="img/idf/12.png" class="fig img-fluid"></p>
+<p><img src="img/idf/13.png" class="fig img-fluid"></p>
 <p>Y, para modelaciones personalizadas, se propone un <strong>transformador de tormentas</strong> para generar los hietogramas por bloques alternos según defina el usuario mediante:</p>
 <ul>
 <li><strong>Duración de la tormenta (D)</strong>.</li>
 <li><strong>Número de bloques o bins</strong>.</li>
 </ul>
+<p><img src="img/idf/14.png" class="fig img-fluid"></p>
+<p><img src="img/idf/15.png" class="fig img-fluid"></p>
 <section id="la-ley-de-frecuencias-y-el-hidrograma" class="level2">
 <h2 data-anchor-id="la-ley-de-frecuencias-y-el-hidrograma">La ley de frecuencias y el hidrograma</h2>
 <p>En la segunda pestaña puede ya accederse a la <strong>ley de frecuencias</strong>, tal como se calculaba en la web-app anteriormente presentada, que vuelve a ser necesaria para los cálculos posteriores; en este caso, solo se ajustan las <strong>lluvias</strong>, ya que los caudales ahora se obtienen por el <strong>método Racional</strong>:</p>
-<div class="fig-note">
-<p><i>Figura —</i> ajuste de la ley de frecuencias de lluvias en la pestaña 2.</p>
-</div>
+<p><img src="img/idf/16.png" class="fig img-fluid"></p>
+<p><img src="img/idf/17.png" class="fig img-fluid"></p>
+<p><img src="img/idf/18.png" class="fig img-fluid"></p>
 <p>Proponiéndose un <strong>hidrograma de la cuenca</strong> para el método Racional (SCS y triangular) para cada periodo de retorno —incluido el seleccionado por el usuario—:</p>
-<div class="fig-note">
-<p><i>Figura —</i> hidrogramas SCS y triangular para cada periodo de retorno.</p>
-</div>
+<p><img src="img/idf/19.png" class="fig img-fluid"></p>
 </section>
 <section id="tránsito-por-el-cauce-muskingum" class="level2">
 <h2 data-anchor-id="tránsito-por-el-cauce-muskingum">Tránsito por el cauce: Muskingum</h2>
 <p>Se ha incluido una sección de interés para modelaciones a posteriori, ya que es usual que en HEC-HMS las cuencas aparezcan subdivididas, con un último tramo en río a cielo abierto donde hay que <strong>transitar el hidrograma</strong>. De cara a solucionar los parámetros de entrada en el <em>Routing Method</em> de <strong>Muskingum</strong> (uno de los más usados), X y K (h), se propone este apartado para obtener una primera aproximación:</p>
-<div class="fig-note">
-<p><i>Figura —</i> apartado de tránsito por el cauce con los parámetros físicos del tramo.</p>
-</div>
 <p>Se realiza en primer lugar una <strong>simulación bruta en muy poco tiempo</strong>, lo que nos permite identificar a priori el escenario más parecido al nuestro. El proceso se realiza en <strong>dos niveles</strong> para asegurar la robustez de los resultados. En total, se ejecutan <strong>más de 1.400 tránsitos de hidrograma</strong> para generar la tabla final.</p>
+<p><img src="img/idf/20.png" class="fig img-fluid"></p>
 <p>Se genera una tabla de <strong>123 simulaciones</strong> con las mejores calibraciones de los parámetros en cada uno de los 1.400 hidrogramas transitados por el cauce, verificando si se cumple la <strong>condición fundamental de estabilidad</strong> —esta tabla nos permitirá tener una aproximación muy verídica de nuestro escenario real, aplicando las condiciones concretas que más se aproximen a nuestro tramo de estudio—:</p>
-<div class="fig-note">
-<p><i>Figura —</i> tabla de 123 simulaciones con las mejores calibraciones de X y K.</p>
-</div>
+<p><img src="img/idf/21.png" class="fig img-fluid"></p>
 <p>Una vez elegido de la tabla el escenario con parámetros físicos más representativos de nuestro cauce, procedemos a realizar ya la <strong>simulación real</strong> para este, obteniendo la propagación final del hidrograma en el cauce, con el <strong>hidrograma de salida final</strong>…</p>
 <p>Estos parámetros permiten una primera aproximación realista para <strong>HEC-HMS</strong>, que nos dará la confirmación del mismo, o una mejor respuesta adaptada ya a las subdivisiones de la cuenca principal que haya realizado.</p>
-<div class="fig-note">
-<p><i>Figura —</i> propagación final del hidrograma en el cauce, con entrada y salida.</p>
-</div>
 <p>El método no es exacto, pero como decimos, es una <strong>primera aproximación bastante realista para tramos no aforados</strong>, donde no se tienen datos previos, y que supera con mucho otras aproximaciones realizadas en proyectos reales habitualmente…</p>
-<p>Hemos querido someterla a prueba con los resultados reales del ejemplo que venimos tratando, y comparado con HEC-HMS: <strong>el hidrograma de entrada es muy parecido; el tránsito en el cauce del hidrograma de subcuenca también es del mismo orden de magnitud</strong>… A partir de aquí, puede ya disponerse de otros softwares más específicos para transitar estos hidrogramas, como <strong>HEC-RAS</strong>, confiando en que los resultados van a estar a la altura de lo esperado.</p>
-<div class="fig-note">
-<p><i>Figura —</i> comparación del tránsito de la web-app con el resultado de HEC-HMS.</p>
-</div>
+<p>Hemos querido someterla a prueba con los resultados reales del ejemplo que venimos tratando:</p>
+<p><img src="img/idf/22.png" class="fig img-fluid"></p>
+<p><img src="img/idf/23.png" class="fig img-fluid"></p>
+<p><img src="img/idf/24.png" class="fig img-fluid"></p>
+<p><img src="img/idf/25.png" class="fig img-fluid"></p>
+<p><img src="img/idf/26.png" class="fig img-fluid"></p>
+<p>y comparado con HEC-HMS:</p>
+<p><img src="img/idf/27.png" class="fig img-fluid"></p>
+<p><img src="img/idf/28.png" class="fig img-fluid"></p>
+<p><img src="img/idf/29.png" class="fig img-fluid"></p>
+<p>A partir de aquí, puede ya disponerse de otros softwares más específicos para transitar estos hidrogramas, como <strong>HEC-RAS</strong>, confiando en que los resultados van a estar a la altura de lo esperado.</p>
 <p>Debe considerarse la idoneidad de estas aplicaciones para <strong>estudios previos, donde se dispone de pocos datos</strong>, permitiendo una aproximación muy rigurosa respecto a lo que venía siendo habitual, realizada además con muy poca inversión y en un tiempo récord. En apenas <strong>1 día</strong> puede tenerse un estudio muy completo con mucho detalle, lo que permitirá objetivar los recursos para estudios posteriores de mayor calado y trascendencia.</p>
 
 
@@ -324,7 +325,7 @@ window.Quarto = {
 <div class="g-col-1" data-index="0" data-listing-file-modified-sort="1786715349038" data-listing-reading-time-sort="1" data-listing-word-count-sort="62">
 <a href="../posts/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img loading='lazy' src="img\caumax\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="img\idf\00.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Artículos
