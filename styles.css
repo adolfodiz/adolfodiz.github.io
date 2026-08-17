@@ -127,3 +127,71 @@ footer.footer a{color:var(--red)}
   .g2,.g3,.g4{grid-template-columns:1fr}
   .hero{margin:-1.2rem -1.2rem 2.4rem}
 }
+
+
+/* ============================================================
+   TEMA CLARO — SOLO PARA ARTÍCULOS (páginas que contienen .article-hero)
+   Los artículos nacieron para LinkedIn (fondo blanco): aquí el contenido
+   pasa a claro (fondo blanco, texto oscuro) manteniendo el navbar y el
+   footer oscuros. La home y el listado de artículos siguen en oscuro.
+   ============================================================ */
+body:has(.article-hero){
+  background:#ffffff;
+  background-image:none;
+  color:#1f2328;
+}
+body:has(.article-hero) h1,
+body:has(.article-hero) h2,
+body:has(.article-hero) h3,
+body:has(.article-hero) h4{
+  color:#111418;
+}
+body:has(.article-hero) h2{border-bottom-color:rgba(0,0,0,.12)}
+body:has(.article-hero) p{color:#2b3036}
+body:has(.article-hero) a{color:#c4161d}
+body:has(.article-hero) a:hover{color:#8f0f14}
+
+body:has(.article-hero) code{
+  background:#eef1f4;border-color:rgba(0,0,0,.1);color:#c4161d;
+}
+body:has(.article-hero) pre{
+  background:#f6f8fa;color:#1f2328;border-left-color:#c4161d;
+  box-shadow:none;
+}
+body:has(.article-hero) pre code{color:inherit}
+
+body:has(.article-hero) .article-hero{
+  background:linear-gradient(135deg,#ffffff,#f2f3f5);
+  border-bottom-color:rgba(0,0,0,.1);
+}
+body:has(.article-hero) .article-hero .ah-date{color:#6b7280}
+body:has(.article-hero) .article-hero img{filter:drop-shadow(0 4px 12px rgba(0,0,0,.15))}
+
+body:has(.article-hero) .fig-note{
+  background:#f6f8fa;border-color:rgba(0,0,0,.16);color:#57606a;
+}
+body:has(.article-hero) .fig-note i{color:#c4161d}
+
+body:has(.article-hero) img.fig,
+body:has(.article-hero) img.fig-portada{
+  border-color:rgba(0,0,0,.08);box-shadow:0 8px 24px rgba(0,0,0,.10);
+}
+body:has(.article-hero) .fig-cap,
+body:has(.article-hero) .video-note{color:#6b7280}
+body:has(.article-hero) .video-wrap{border-color:rgba(0,0,0,.08)}
+
+/* Tintes de color (palabras resaltadas) más oscuros sobre blanco */
+body:has(.article-hero) .t-blue{color:#1d6fd1}
+body:has(.article-hero) .t-purple{color:#7a5fd1}
+body:has(.article-hero) .t-green{color:#2f9e57}
+body:has(.article-hero) .t-red{color:#c0392b}
+body:has(.article-hero) .t-magenta{color:#d63384}
+body:has(.article-hero) .t-amber{color:#b8860b}
+
+/* Categoría del artículo (ah-cat) legible sobre blanco */
+body:has(.article-hero) .a-blue .ah-cat{color:#1d6fd1}
+body:has(.article-hero) .a-red .ah-cat{color:#c0392b}
+body:has(.article-hero) .a-purple .ah-cat{color:#7a5fd1}
+body:has(.article-hero) .a-green .ah-cat{color:#2f9e57}
+body:has(.article-hero) .a-magenta .ah-cat{color:#d63384}
+body:has(.article-hero) .a-amber .ah-cat{color:#b8860b}
